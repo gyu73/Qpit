@@ -7,4 +7,5 @@ export { default as NotEnouchArrowsScreen } from './NotEnouchArrowsScreen';
 export { default as RegisterHintsScreen } from './RegisterHintsScreen';
 export { default as RegisterLikePersonScreen } from './RegisterLikePersonScreen';
 export { default as RegisterSecretsHintsScreen } from './RegisterSecretsHintsScreen';
+export { default as ShootArrowResultsScreen } from './ShootArrowResultsScreen';
 export { default as TopScreen } from './TopScreen';

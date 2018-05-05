@@ -6,11 +6,12 @@
 
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Badge } from 'react-native-elements';
 
 function RegisterSecretsHintsScreen() {
   return (
     <View style={styles.container}>
-      <Text>ヒント登録ページを表示する。</Text>
+      <Text>急接近ヒント登録ページを表示する。</Text>
     </View>
   );
 }
