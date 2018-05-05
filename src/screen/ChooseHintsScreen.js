@@ -6,11 +6,24 @@
 
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Badge } from 'react-native-elements';
 
-function ChooseHintsScreen() {
+function ChooseHintsScreen(props) {
   return (
     <View style={styles.container}>
       <Text>ヒント選択ページを表示する。</Text>
+      <Badge
+        containerStyle={{ backgroundColor: '#f0f' }}
+        onPress={() => props.navigation.navigate('ConfirmShootArrows')}
+      >
+        <Text>シークレットヒントに矢を飛ばす</Text>
+      </Badge>
+      <Badge
+        containerStyle={{ backgroundColor: '#f0f' }}
+        onPress={() => props.navigation.navigate('ConfirmShootArrows')}
+      >
+        <Text>ノーマルヒントに矢を飛ばす</Text>
+      </Badge>
     </View>
   );
 }

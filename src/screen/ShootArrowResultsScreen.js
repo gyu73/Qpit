@@ -6,11 +6,18 @@
 
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Badge } from 'react-native-elements';
 
-function ShootArrowResultsScreen() {
+function ShootArrowResultsScreen(props) {
   return (
     <View style={styles.container}>
       <Text>矢を放った結果を表示する</Text>
+      <Badge
+        containerStyle={{ backgroundColor: '#f0f' }}
+        onPress={() => props.navigation.navigate('Tab')}
+      >
+        <Text>ホームに戻る</Text>
+      </Badge>
     </View>
   );
 }
