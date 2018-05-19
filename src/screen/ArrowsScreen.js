@@ -46,7 +46,7 @@ function ArrowsScreen(props: Props) {
       />
       <Text style={{ paddingTop: 20, color: '#ffffff' }}>Aron</Text>
       <Button
-        onPress={() => props.navigation.navigate('RegisterLikePerson')}
+        onPress={() => props.navigation.navigate('ChooseHints')}
         title="矢を飛ばす"
         buttonStyle={styles.buttonStyle}
         color="#FF69B4"

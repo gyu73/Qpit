@@ -5,36 +5,33 @@
  */
 
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Badge } from 'react-native-elements';
+import { ScrollView, StyleSheet } from 'react-native';
+import {
+  NormalHintsComponents,
+  SecretHintsComponents,
+} from '../common/';
 
 function ChooseHintsScreen(props) {
+  const styles = StyleSheet.create({
+    container: {
+      backgroundColor: '#FF69B4',
+      alignItems: 'center',
+      paddingTop: 20,
+      paddingBottom: 20,
+    },
+  });
   return (
-    <View style={styles.container}>
-      <Text>ヒント選択ページを表示する。</Text>
-      <Badge
-        containerStyle={{ backgroundColor: '#f0f' }}
-        onPress={() => props.navigation.navigate('ConfirmShootArrows')}
-      >
-        <Text>シークレットヒントに矢を飛ばす</Text>
-      </Badge>
-      <Badge
-        containerStyle={{ backgroundColor: '#f0f' }}
-        onPress={() => props.navigation.navigate('ConfirmShootArrows')}
-      >
-        <Text>ノーマルヒントに矢を飛ばす</Text>
-      </Badge>
-    </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      <SecretHintsComponents
+        navigatePlace="ConfirmShootArrows"
+        navigation={props.navigation}
+      />
+      <NormalHintsComponents
+        navigatePlace="ConfirmShootArrows"
+        navigation={props.navigation}
+      />
+    </ScrollView>
   );
 }
 
 export default ChooseHintsScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
