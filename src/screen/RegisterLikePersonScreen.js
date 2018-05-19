@@ -11,7 +11,7 @@ import { Button } from 'react-native-elements';
 function RegisterLikePersonScreen() {
   const styles = StyleSheet.create({
     container: {
-      height: "100%",
+      height: '100%',
       backgroundColor: '#FF69B4',
       alignItems: 'center',
       paddingTop: 20,
@@ -33,7 +33,7 @@ function RegisterLikePersonScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={{ color: '#ffffff', marginTop: 80, fontWeight: "900" }}>好きな人のTwitter IDを登録してください</Text>
+      <Text style={{ color: '#ffffff', marginTop: 80, fontWeight: '900' }}>好きな人のTwitter IDを登録してください</Text>
       <Button
         buttonStyle={styles.buttonStyle}
         color="#FF69B4"
