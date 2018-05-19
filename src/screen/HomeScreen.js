@@ -92,7 +92,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      ...Actions.todos,
+      ...Actions.users,
     },
     dispatch,
   );
@@ -102,6 +102,11 @@ const Enhance = compose(
     mapStateToProps,
     mapDispatchToProps,
   ),
+  lifecycle({
+    componentWillMount() {
+      this.props.getuserinfo();
+    },
+  }),
 );
 
 export default Enhance(HomeScreen);
