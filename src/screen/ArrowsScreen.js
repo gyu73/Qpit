@@ -44,7 +44,7 @@ function ArrowsScreen(props: Props) {
         source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg' }}
         activeOpacity={0.7}
       />
-      <Text style={{ paddingTop: 20, color: '#ffffff' }}>Sophia</Text>
+      <Text style={{ paddingTop: 20, color: '#ffffff' }}>Aron</Text>
       <Button
         onPress={() => props.navigation.navigate('RegisterLikePerson')}
         title="矢を飛ばす"
