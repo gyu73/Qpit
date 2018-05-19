@@ -52,7 +52,6 @@ function HomeScreen(props: Props) {
   });
 
   return (
-    console.log(props) ||
     <ScrollView contentContainerStyle={styles.container}>
       <Avatar
         large
