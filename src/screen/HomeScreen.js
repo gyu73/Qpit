@@ -5,10 +5,16 @@
  */
 
 import React from 'react';
-import { ScrollView, View, Text, StyleSheet } from 'react-native';
-import { SocialIcon, Badge, Avatar, Button } from 'react-native-elements';
+import { ScrollView, Text, StyleSheet } from 'react-native';
+import { Avatar, Button } from 'react-native-elements';
 
-function HomeScreen(props) {
+type Props = {
+  navigation: {
+    navigate: func
+  }
+}
+
+function HomeScreen(props: Props) {
   const styles = StyleSheet.create({
     container: {
       backgroundColor: '#FF69B4',
@@ -65,11 +71,31 @@ function HomeScreen(props) {
     />
   ));
 
-  const normalHints = ['好きな人はいる？', '部活やってる？', '何の部活？', '髪型はどんな髪型？', '服装はどんなの？', '身長どれくらい？', '性格はどんな性格？', '何歳？', 'どこの学校？', '口癖は？', '好きな食べ物は？', '好きな音楽は？', '趣味は？', '得意科目は？', '苦手科目は？', '喋ったことある？'].map((hint, index) => (
+  const normalHints = [
+    { title_jp: '好きな人はいる？', title_en: 'has_like_person' },
+    { title_jp: '部活やってる？', title_en: 'belongs_to_club' },
+    { title_jp: '何の部活？', title_en: 'club' },
+    { title_jp: '髪型はどんな髪型？', title_en: 'hair_style' },
+    { title_jp: '服装はどんなの？', title_en: 'clothing' },
+    { title_jp: '身長どれくらい？', title_en: 'height' },
+    { title_jp: 'どんな性格？', title_en: 'personality' },
+    { title_jp: '何歳？', title_en: 'age' },
+    { title_jp: 'どこの学校？', title_en: 'school' },
+    { title_jp: 'どこの会社？', title_en: 'company' },
+    { title_jp: '口癖は？', title_en: 'favorite_phrase' },
+    { title_jp: '好きな食べ物は？', title_en: 'like_food' },
+    { title_jp: '好きな音楽は？', title_en: 'like_music' },
+    { title_jp: '趣味は？', title_en: 'hobby' },
+    { title_jp: '得意科目は？', title_en: 'like_subject' },
+    { title_jp: '苦手科目は？', title_en: 'hate_subject' },
+    { title_jp: '喋ったことある？', title_en: 'has_spoken' },
+  ];
+
+  const normalHintsComponents = normalHints.map((hint, index) => (
     <Button
-      key="${hints} ${index}"
-      onPress={() => props.navigation.navigate('RegisterHints')}
-      title={hint}
+      key="${hint.title_jp} ${index}"
+      onPress={() => props.navigation.navigate('RegisterHints', { hint })}
+      title={hint.title_jp}
       buttonStyle={styles.normalHintButtonStyle}
       color="#FF69B4"
       fontWeight="900"
@@ -98,7 +124,7 @@ function HomeScreen(props) {
       {secretHints}
       <Text style={{ paddingTop: 20, color: '#ffffff' }}>好きな人のヒントを記入する！</Text>
       <Text style={{ color: '#ffffff' }}>（最低7個）</Text>
-      {normalHints}
+      {normalHintsComponents}
     </ScrollView>
   );
 }
