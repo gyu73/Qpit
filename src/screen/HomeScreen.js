@@ -8,7 +8,10 @@ import React from 'react';
 import { ScrollView, Text, StyleSheet } from 'react-native';
 import { Avatar, Button } from 'react-native-elements';
 
-import * as config from '../config/';
+import {
+  normalHintsComponents,
+  secretHintsComponents,
+} from '../common/';
 
 type Props = {
   navigation: {
@@ -36,55 +39,8 @@ function HomeScreen(props: Props) {
       shadowColor: 'black',
       shadowOpacity: 0.3,
     },
-    secretHintButtonStyle: {
-      width: 180,
-      height: 40,
-      borderColor: 'transparent',
-      borderWidth: 0,
-      borderRadius: 30,
-      backgroundColor: '#FF1493',
-      marginTop: 20,
-      shadowOffset: { width: 4, height: 4 },
-      shadowColor: 'black',
-      shadowOpacity: 0.3,
-    },
-    normalHintButtonStyle: {
-      width: 180,
-      height: 40,
-      borderColor: 'transparent',
-      borderWidth: 0,
-      borderRadius: 30,
-      backgroundColor: '#ffffff',
-      marginTop: 20,
-      shadowOffset: { width: 4, height: 4 },
-      shadowColor: 'black',
-      shadowOpacity: 0.3,
-    },
   });
 
-  const secretHintsComponents = config.secretHints.map((hint, index) => (
-    <Button
-      key="${hints} ${index}"
-      onPress={() => props.navigation.navigate('RegisterSecretHints', { hint })}
-      title={hint.title_jp}
-      buttonStyle={styles.secretHintButtonStyle}
-      color="#ffffff"
-      fontWeight="900"
-      fontSize="14"
-    />
-  ));
-
-  const normalHintsComponents = config.normalHints.map((hint, index) => (
-    <Button
-      key="${hint.title_jp} ${index}"
-      onPress={() => props.navigation.navigate('RegisterHints', { hint })}
-      title={hint.title_jp}
-      buttonStyle={styles.normalHintButtonStyle}
-      color="#FF69B4"
-      fontWeight="900"
-      fontSize="14"
-    />
-  ));
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Avatar
