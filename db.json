@@ -1,0 +1,49 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "like_person_twitter_id": "aaa",
+      "like_person_profile_image": "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
+      "last_shoot_arrow_time": "2005-12-21 00:00:00.000",
+      "profile_image": "http://profile_image.jpg",
+      "stock_arrow": 3,
+      "comig_arrow": 10,
+      "twitter_id": "gyu73"
+    }
+  ],
+  "hints": [
+    {
+      "id": 2,
+      "has_like_person": true,
+      "belongs_to_club": true,
+      "club": "サッカー",
+      "hair_style": "ショート",
+      "clothing": "古着",
+      "height": 180,
+      "personality": "元気",
+      "age": 20,
+      "school": "尼崎高校",
+      "company": "div株式会社",
+      "favorite_phrase": "まじで？",
+      "llike_food": "お寿司",
+      "like_music": "ケツメイシ",
+      "hobby": "野球",
+      "like_subject": "数学",
+      "hate_subject": "英語",
+      "has_spoken": true,
+      "users_id": 1
+    }
+  ],
+  "secret_hints": [
+    {
+      "id": 2,
+      "like_person_initial": "T. K.",
+      "class": "3年4組",
+      "familiar": true,
+      "contact_line": true,
+      "like_person_nickname": "タロちゃん",
+      "first_meeting": "体育祭",
+      "users_id": 1,
+    }
+  ]
+}
