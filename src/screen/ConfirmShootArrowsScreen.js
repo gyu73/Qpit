@@ -6,29 +6,62 @@
 
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Badge } from 'react-native-elements';
+import { Avatar, Button } from 'react-native-elements';
 
-function ConfirmShootArrowsScreen(props) {
+  type Props = {
+    navigation: {
+      navigate: func,
+      state: {
+        params: {
+          hint: object,
+        }
+      }
+    }
+  }
+
+
+function ConfirmShootArrowsScreen(props: Props) {
+  const { hint } = props.navigation.state.params;
+  const { navigation } = props;
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#FF69B4',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    buttonStyle: {
+      width: 180,
+      height: 40,
+      borderColor: 'transparent',
+      borderWidth: 0,
+      borderRadius: 30,
+      backgroundColor: '#ffffff',
+      marginTop: 20,
+      shadowOffset: { width: 4, height: 4 },
+      shadowColor: 'black',
+      shadowOpacity: 0.3,
+    },
+  });
   return (
     <View style={styles.container}>
-      <Text>矢を放つ確認ページを表示する。</Text>
-      <Badge
-        containerStyle={{ backgroundColor: '#f0f' }}
-        onPress={() => props.navigation.navigate('ShootArrowResults')}
-      >
-        <Text>選択したヒントに矢を飛ばすか確認</Text>
-      </Badge>
+      <Avatar
+        large
+        rounded
+        source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg' }}
+        activeOpacity={0.7}
+      />
+      <Text style={{ paddingTop: 20, color: '#ffffff' }}>Ryota</Text>
+      <Button
+        onPress={() => navigation.navigate('ShootArrowResults', { hint })}
+        title={hint.title_jp}
+        buttonStyle={styles.buttonStyle}
+        color="#FF69B4"
+        fontWeight="900"
+        fontSize="14"
+      />
     </View>
   );
 }
 
 export default ConfirmShootArrowsScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
