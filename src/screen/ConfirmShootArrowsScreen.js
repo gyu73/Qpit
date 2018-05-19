@@ -7,6 +7,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Avatar, Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/Entypo';
 
   type Props = {
     navigation: {
@@ -52,6 +53,16 @@ function ConfirmShootArrowsScreen(props: Props) {
         activeOpacity={0.7}
       />
       <Text style={{ paddingTop: 20, color: '#ffffff' }}>Ryota</Text>
+      <Icon
+        name="heart-outlined"
+        size={50}
+        color="#ffffff"
+      />
+      <Icon
+        name="arrow-long-up"
+        size={70}
+        color="#ffffff"
+      />
       <Button
         onPress={() => navigation.navigate('ShootArrowResults', { hint })}
         title={hint.title_jp}
