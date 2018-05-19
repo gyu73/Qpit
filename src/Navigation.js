@@ -20,13 +20,13 @@ const TabPageScreen = TabNavigator({
 });
 
 const Navigation = StackNavigator({
-  NotEnouchArrows: { screen: NotEnouchArrowsScreen },
   Tab: { screen: TabPageScreen },
   RegisterHints: { screen: RegisterHintsScreen },
   RegisterSecretHints: { screen: RegisterSecretsHintsScreen },
   RegisterLikePerson: { screen: RegisterLikePersonScreen },
   ChooseHints: { screen: ChooseHintsScreen },
   ConfirmShootArrows: { screen: ConfirmShootArrowsScreen },
+  NotEnouchArrows: { screen: NotEnouchArrowsScreen },
   ShootArrowResults: {
     screen: ShootArrowResultsScreen,
     navigationOptions: () => ({
