@@ -9,8 +9,8 @@ import { ScrollView, Text, StyleSheet } from 'react-native';
 import { Avatar, Button } from 'react-native-elements';
 
 import {
-  normalHintsComponents,
-  secretHintsComponents,
+  NormalHintsComponents,
+  SecretHintsComponents,
 } from '../common/';
 
 type Props = {
@@ -60,10 +60,16 @@ function HomeScreen(props: Props) {
       />
       <Text style={{ paddingTop: 20, color: '#ffffff' }}>急接近ヒントを記入する！</Text>
       <Text style={{ color: '#ffffff' }}>（最低1個）</Text>
-      {secretHintsComponents}
+      <SecretHintsComponents
+        navigatePlace="RegisterSecretHints"
+        navigation={props.navigation}
+      />
       <Text style={{ paddingTop: 20, color: '#ffffff' }}>好きな人のヒントを記入する！</Text>
       <Text style={{ color: '#ffffff' }}>（最低7個）</Text>
-      {normalHintsComponents}
+      <NormalHintsComponents
+        navigatePlace="RegisterHints"
+        navigation={props.navigation}
+      />
     </ScrollView>
   );
 }

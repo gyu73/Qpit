@@ -18,16 +18,22 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
   },
 });
-const secretHintsComponents = config.secretHints.map((hint, index) => (
-  <Button
-    key="${hints} ${index}"
-    onPress={() => props.navigation.navigate('RegisterSecretHints', { hint })}
-    title={hint.title_jp}
-    buttonStyle={styles.secretHintButtonStyle}
-    color="#ffffff"
-    fontWeight="900"
-    fontSize="14"
-  />
-));
+function secretHintsComponents(props) {
+  const {
+    navigation,
+    navigatePlace,
+  } = props;
+  return config.secretHints.map((hint, index) => (
+    <Button
+      key="${hints} ${index}"
+      onPress={() => navigation.navigate(navigatePlace, { hint })}
+      title={hint.title_jp}
+      buttonStyle={styles.secretHintButtonStyle}
+      color="#ffffff"
+      fontWeight="900"
+      fontSize="14"
+    />
+  ));
+}
 
 export default secretHintsComponents;

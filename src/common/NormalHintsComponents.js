@@ -19,16 +19,22 @@ const styles = StyleSheet.create({
   },
 });
 
-const normalHintsComponents = config.normalHints.map((hint, index) => (
-  <Button
-    key="${hint.title_jp} ${index}"
-    onPress={() => props.navigation.navigate('RegisterHints', { hint })}
-    title={hint.title_jp}
-    buttonStyle={styles.normalHintButtonStyle}
-    color="#FF69B4"
-    fontWeight="900"
-    fontSize="14"
-  />
-));
+function normalHintsComponents(props) {
+  const {
+    navigation,
+    navigatePlace,
+  } = props;
+  return config.normalHints.map((hint, index) => (
+    <Button
+      key="${hint.title_jp} ${index}"
+      onPress={() => navigation.navigate(navigatePlace, { hint })}
+      title={hint.title_jp}
+      buttonStyle={styles.normalHintButtonStyle}
+      color="#FF69B4"
+      fontWeight="900"
+      fontSize="14"
+    />
+  ));
+}
 
 export default normalHintsComponents;

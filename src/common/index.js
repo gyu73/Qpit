@@ -1,2 +1,2 @@
-export { default as normalHintsComponents } from './NormalHintsComponents';
-export { default as secretHintsComponents } from './SecretHintsComponents';
+export { default as NormalHintsComponents } from './NormalHintsComponents';
+export { default as SecretHintsComponents } from './SecretHintsComponents';
