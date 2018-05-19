@@ -6,7 +6,10 @@
     "import"
   ],
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "no-underscore-dangle": 0,
+    "no-undef": 0,
+    "camelcase": 0
   },
   "parser": "babel-eslint"
 }

@@ -1,12 +1,29 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import devToolsEnhancer from 'remote-redux-devtools';
+import promiseMiddleware from 'redux-promise';
+import reducer from './reducers/';
 
 import Navigation from './src/Navigation';
 
-export default class App extends React.Component {
-  render() {
-    return (
-        <Navigation />
-    );
-  }
+const middleWare = [
+  promiseMiddleware,
+];
+
+const store = createStore(
+  reducer,
+  devToolsEnhancer(),
+  applyMiddleware(...middleWare),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
+
+function App() {
+  return (
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
+  );
 }
+
+export default App;
