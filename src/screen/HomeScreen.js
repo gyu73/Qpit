@@ -59,11 +59,21 @@ function HomeScreen(props: Props) {
       shadowOpacity: 0.3,
     },
   });
-  const secretHints = ['好きな人のイニシャル', '何年何組？', '身近な人？', '好きな人とLINEしてる？', '好きな人のあだ名は？', '出会いのきっかけは？'].map((hint, index) => (
+
+  const secretHints = [
+    { title_jp: '好きな人のイニシャル', title_en: 'like_person_initial' },
+    { title_jp: '何年何組？', title_en: 'class' },
+    { title_jp: '身近な人？', title_en: 'familiar' },
+    { title_jp: '好きな人とLINEしてる？', title_en: 'contact_line' },
+    { title_jp: '好きな人のあだ名は？', title_en: 'like_person_nickname' },
+    { title_jp: '出会いのきっかけは？', title_en: 'first_meeting' },
+  ];
+
+  const secretHintsComponents = secretHints.map((hint, index) => (
     <Button
       key="${hints} ${index}"
-      onPress={() => props.navigation.navigate('RegisterSecretHints')}
-      title={hint}
+      onPress={() => props.navigation.navigate('RegisterSecretHints', { hint })}
+      title={hint.title_jp}
       buttonStyle={styles.secretHintButtonStyle}
       color="#ffffff"
       fontWeight="900"
@@ -112,7 +122,7 @@ function HomeScreen(props: Props) {
       />
       <Text style={{ paddingTop: 20, color: '#ffffff' }}>Ryota</Text>
       <Button
-        onPress={() => props.navigation.navigate('RegisterHints')}
+        onPress={() => props.navigation.navigate('RegisterLikePerson')}
         title="好きな人を登録する"
         buttonStyle={styles.buttonStyle}
         color="#FF69B4"
@@ -121,7 +131,7 @@ function HomeScreen(props: Props) {
       />
       <Text style={{ paddingTop: 20, color: '#ffffff' }}>急接近ヒントを記入する！</Text>
       <Text style={{ color: '#ffffff' }}>（最低1個）</Text>
-      {secretHints}
+      {secretHintsComponents}
       <Text style={{ paddingTop: 20, color: '#ffffff' }}>好きな人のヒントを記入する！</Text>
       <Text style={{ color: '#ffffff' }}>（最低7個）</Text>
       {normalHintsComponents}
