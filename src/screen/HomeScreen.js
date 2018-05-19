@@ -6,7 +6,12 @@
 
 import React from 'react';
 import { ScrollView, Text, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Avatar, Button } from 'react-native-elements';
+import { compose, lifecycle } from 'recompose';
+
+import Actions from '../../actions/';
 
 import {
   NormalHintsComponents,
@@ -20,6 +25,11 @@ type Props = {
 }
 
 function HomeScreen(props: Props) {
+  const {
+    profile_image,
+    twitter_id,
+  } = props.users;
+
   const styles = StyleSheet.create({
     container: {
       backgroundColor: '#FF69B4',
@@ -42,14 +52,15 @@ function HomeScreen(props: Props) {
   });
 
   return (
+    console.log(props) ||
     <ScrollView contentContainerStyle={styles.container}>
       <Avatar
         large
         rounded
-        source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }}
+        source={{ uri: `${profile_image}` }}
         activeOpacity={0.7}
       />
-      <Text style={{ paddingTop: 20, color: '#ffffff' }}>Ryota</Text>
+      <Text style={{ paddingTop: 20, color: '#ffffff' }}>{twitter_id}</Text>
       <Button
         onPress={() => props.navigation.navigate('RegisterLikePerson')}
         title="好きな人を登録する"
@@ -74,4 +85,23 @@ function HomeScreen(props: Props) {
   );
 }
 
-export default HomeScreen;
+const mapStateToProps = state => ({
+  users: state.users,
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      ...Actions.todos,
+    },
+    dispatch,
+  );
+
+const Enhance = compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
+);
+
+export default Enhance(HomeScreen);
