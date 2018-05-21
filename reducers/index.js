@@ -3,4 +3,5 @@ import users from './users';
 
 export default combineReducers({
   users,
+  secret_hints,
 });

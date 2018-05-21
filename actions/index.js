@@ -21,4 +21,7 @@ export default createActions({
       return result;
     },
   },
+  SECRETHINTS: {
+    REGISTERSECRETHINTS: () => { console.log('sss'); },
+  },
 });
