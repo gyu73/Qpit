@@ -10,9 +10,9 @@ export default createActions({
     },
     // todo 現在ログインしているユーザーidを入れる必要あり。
     // todo validationの実装必要あり。
-    REGISTERLIKEPERSON: async (value) => {
-      const result = await fetch('http://localhost:8887/users', {
-        method: 'post',
+    REGISTERLIKEPERSON: async (value, userID) => {
+      const result = await fetch(`http://localhost:8887/users/${userID}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
