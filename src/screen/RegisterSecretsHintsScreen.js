@@ -7,8 +7,33 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
+import { compose, withHandlers } from 'recompose';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import t from 'tcomb-form-native';
+
+import Actions from '../../actions';
+
+// tcomb-formを用いるための変数設定↓
+const Forms = t.form.Form;
+const SecretHints = t.struct({
+  secret_hints: t.String,
+});
+const options = {
+  fields: {
+    secret_hints: {
+      auto: 'none',
+      placeholder: '答えを記入してね',
+    },
+  },
+};
+
+// styleの設定はglobalに設定されている。詳しくはRegisterLikePersonを確認する。
+
+// tcomb-formを用いるための変数設定↑
 
 type Props = {
+  handleRegisterSecretHints: func,
   navigation: {
     state: {
       params: string
@@ -34,6 +59,7 @@ function RegisterHintsScreen(props: Props) {
       borderRadius: 30,
       backgroundColor: '#FF1493',
       marginTop: 80,
+      marginBottom: 30,
       shadowOffset: { width: 4, height: 4 },
       shadowColor: 'black',
       shadowOpacity: 0.3,
@@ -48,11 +74,13 @@ function RegisterHintsScreen(props: Props) {
         fontWeight="900"
         fontSize="14"
       />
-      <Button
-        buttonStyle={styles.secretHintButtonStyle}
-        color="#ffffff"
-        fontWeight="900"
-        fontSize="14"
+      <Forms
+        ref={(ref) => {
+          this._formRef = ref;
+          return this._formRef;
+        }}
+        type={SecretHints}
+        options={options}
       />
       <Button
         title="登録する"
@@ -60,9 +88,36 @@ function RegisterHintsScreen(props: Props) {
         color="#ffffff"
         fontWeight="900"
         fontSize="14"
+        onPress={() => props.handleRegisterSecretHints(hint.title_jp)}
       />
     </View>
   );
 }
 
-export default RegisterHintsScreen;
+const mapStateToProps = state => ({
+  secret_hints: state.secret_hints,
+  users: state.users,
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      ...Actions.secrethints,
+    },
+    dispatch,
+  );
+
+const Enhance = compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
+  withHandlers({
+    handleRegisterSecretHints: props => (hint) => {
+      const value = this._formRef.getValue().secret_hints;
+      props.registersecrethints(hint, value, props.users.id);
+    },
+  }),
+);
+
+export default Enhance(RegisterHintsScreen);

@@ -22,6 +22,15 @@ export default createActions({
     },
   },
   SECRETHINTS: {
-    REGISTERSECRETHINTS: () => { console.log('sss'); },
+    REGISTERSECRETHINTS: async (hint, value, userID) => {
+      const result = await fetch('http://localhost:8887/secret_hints', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `${hint}=${value}&useer_id=${userID}`,
+      }).then(response => response.json());
+      return result;
+    },
   },
 });

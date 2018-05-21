@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-// import Actions from '../actions/';
+import Actions from '../actions/';
 
 const secret_hints = handleActions(
   {
