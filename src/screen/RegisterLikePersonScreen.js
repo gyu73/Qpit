@@ -7,8 +7,36 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
+import { compose, lifecycle, withHandlers } from 'recompose';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import t from 'tcomb-form-native';
 
-function RegisterLikePersonScreen() {
+import Actions from '../../actions';
+
+// tcomb-formを用いるための変数設定↓
+const Forms = t.form.Form;
+const LikePerson = t.struct({
+  like_person: t.String,
+});
+const options = {
+  fields: {
+    like_person: {
+      auto: 'none',
+      placeholder: '@gyu73',
+    },
+  },
+};
+
+// styleの設定
+t.form.Form.stylesheet.textbox.normal.width = 200;
+t.form.Form.stylesheet.textbox.normal.height = 90;
+t.form.Form.stylesheet.textbox.normal.backgroundColor = '#ffffff';
+t.form.Form.stylesheet.textbox.normal.borderRadius = 10;
+
+// tcomb-formを用いるための変数設定↑
+
+function RegisterLikePersonScreen(props) {
   const styles = StyleSheet.create({
     container: {
       height: '100%',
@@ -29,16 +57,30 @@ function RegisterLikePersonScreen() {
       shadowColor: 'black',
       shadowOpacity: 0.3,
     },
+    fieldStyle: {
+      width: 180,
+      height: 50,
+    },
   });
 
   return (
     <View style={styles.container}>
-      <Text style={{ color: '#ffffff', marginTop: 80, fontWeight: '900' }}>好きな人のTwitter IDを登録してください</Text>
-      <Button
-        buttonStyle={styles.buttonStyle}
-        color="#FF69B4"
-        fontWeight="900"
-        fontSize="14"
+      <Text style={{
+        color: '#ffffff',
+        marginTop: 80,
+        marginBottom: 30,
+        fontWeight: '900',
+        }}
+      >
+        好きな人のTwitter IDを登録してください
+      </Text>
+      <Forms
+        ref={(ref) => {
+          this._formRef = ref;
+          return this._formRef;
+        }}
+        type={LikePerson}
+        options={options}
       />
       <Button
         title="登録する"
@@ -46,9 +88,40 @@ function RegisterLikePersonScreen() {
         color="#FF69B4"
         fontWeight="900"
         fontSize="14"
+        onPress={() => props.handleRegisterLikePerson()}
       />
     </View>
   );
 }
 
-export default RegisterLikePersonScreen;
+const mapStateToProps = state => ({
+  users: state.users,
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      ...Actions.users,
+    },
+    dispatch,
+  );
+
+const Enhance = compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
+  withHandlers({
+    handleRegisterLikePerson: props => () => {
+      const value = this._formRef.getValue().like_person;
+      props.registerlikeperson(value);
+    },
+  }),
+  lifecycle({
+    componentWillMount() {
+      this.props.getuserinfo();
+    },
+  }),
+);
+
+export default Enhance(RegisterLikePersonScreen);
