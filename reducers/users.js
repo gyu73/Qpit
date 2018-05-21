@@ -12,7 +12,7 @@ const users = handleActions(
   {
     id: 1,
     like_person_twitter_id: 'aaa',
-    like_person_profile_image: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    like_person_profile_image: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
     last_shoot_arrow_time: '2005-12-21 00:00:00.000',
     profile_image: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
     stock_arrow: 3,
