@@ -41,7 +41,7 @@ type Props = {
   }
 }
 
-function RegisterHintsScreen(props: Props) {
+function RegisterSecretHintsScreen(props: Props) {
   const { hint } = props.navigation.state.params;
   const styles = StyleSheet.create({
     container: {
@@ -120,4 +120,4 @@ const Enhance = compose(
   }),
 );
 
-export default Enhance(RegisterHintsScreen);
+export default Enhance(RegisterSecretHintsScreen);
