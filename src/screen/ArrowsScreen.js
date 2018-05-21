@@ -7,6 +7,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Avatar, Button } from 'react-native-elements';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
+
+import Actions from '../../actions/';
 
 type Props = {
   navigation: {
@@ -41,10 +46,10 @@ function ArrowsScreen(props: Props) {
       <Avatar
         large
         rounded
-        source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg' }}
+        source={{ uri: props.users.like_person_profile_image }}
         activeOpacity={0.7}
       />
-      <Text style={{ paddingTop: 20, color: '#ffffff' }}>Aron</Text>
+      <Text style={{ paddingTop: 20, color: '#ffffff' }}>{props.users.like_person_twitter_id}</Text>
       <Button
         onPress={() => props.navigation.navigate('ChooseHints')}
         title="矢を飛ばす"
@@ -57,4 +62,21 @@ function ArrowsScreen(props: Props) {
   );
 }
 
-export default ArrowsScreen;
+const mapStateToProps = state => ({
+  users: state.users,
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      ...Actions.users,
+    },
+    dispatch,
+  );
+
+const Enhance = compose(connect(
+  mapStateToProps,
+  mapDispatchToProps,
+));
+
+export default Enhance(ArrowsScreen);
