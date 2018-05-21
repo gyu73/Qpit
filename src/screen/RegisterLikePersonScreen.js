@@ -114,7 +114,7 @@ const Enhance = compose(
   withHandlers({
     handleRegisterLikePerson: props => () => {
       const value = this._formRef.getValue().like_person;
-      props.registerlikeperson(value);
+      props.registerlikeperson(value, props.users.id);
     },
   }),
   lifecycle({
