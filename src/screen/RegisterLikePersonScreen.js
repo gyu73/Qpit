@@ -23,7 +23,7 @@ const options = {
   fields: {
     like_person: {
       auto: 'none',
-      placeholder: '@gyu73',
+      placeholder: '例) gyu73',
     },
   },
 };
@@ -115,6 +115,7 @@ const Enhance = compose(
     handleRegisterLikePerson: props => () => {
       const value = this._formRef.getValue().like_person;
       props.registerlikeperson(value, props.users.id);
+      props.navigation.navigate('Tab');
     },
   }),
   lifecycle({

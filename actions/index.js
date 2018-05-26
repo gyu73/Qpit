@@ -8,15 +8,13 @@ export default createActions({
         .then(response => response[0]);
       return result;
     },
-    // todo 現在ログインしているユーザーidを入れる必要あり。
-    // todo validationの実装必要あり。
-    REGISTERLIKEPERSON: async (value, userID) => {
-      const result = await fetch(`http://localhost:8887/users/${userID}`, {
+    REGISTERLIKEPERSON: async (like_person_twitter_id, userID) => {
+      const result = await fetch('http://localhost:8887/users', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: `like_person_twitter_id=${value}`,
+        body: `like_person_twitter_id=${like_person_twitter_id}&user_id=${userID}`,
       }).then(response => response.json());
       return result;
     },
