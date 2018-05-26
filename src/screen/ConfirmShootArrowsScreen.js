@@ -89,6 +89,7 @@ const mapDispatchToProps = dispatch =>
     {
       ...Actions.users,
       ...Actions.secrethints,
+      ...Actions.normalhints,
     },
     dispatch,
   );
@@ -102,11 +103,11 @@ const Enhance = compose(
     handleShootArrow: props => () => {
       const { hint, hint_type } = props.navigation.state.params;
       if (hint_type === 'secret') {
-        props.getstersecrethints(props.users.id, props.users.like_person_twitter_id, hint.title_en);
+        props.getsecrethints(props.users.id, props.users.like_person_twitter_id, hint.title_en);
       } else {
-        console.log('ノーマルヒントの検索');
+        props.getnormalhints(props.users.id, props.users.like_person_twitter_id, hint.title_en);
       }
-      props.navigation.navigate('ShootArrowResults', { hint });
+      props.navigation.navigate('ShootArrowResults', { hint, hint_type });
     },
   }),
 );

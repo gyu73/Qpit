@@ -7,6 +7,9 @@ const normal_hints = handleActions(
     [Actions.normalhints.registernormalhints](state, action) {
       return Object.assign({}, state, action.payload);
     },
+    [Actions.normalhints.getnormalhints](state, action) {
+      return Object.assign({}, state, action.payload);
+    },
   },
   {
     id: 2,

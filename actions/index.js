@@ -30,7 +30,7 @@ export default createActions({
       }).then(response => response.json());
       return result;
     },
-    GETSTERSECRETHINTS: async (userID, likePersonTwitterID, hintContent) => {
+    GETSECRETHINTS: async (userID, likePersonTwitterID, hintContent) => {
       const result = await fetch(`http://localhost:8887/secret_hints/${userID}/${likePersonTwitterID}?content=${hintContent}`, {
         method: 'GET',
       }).then(response => response.json());
@@ -45,6 +45,12 @@ export default createActions({
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: `${hint}=${value}&useer_id=${userID}`,
+      }).then(response => response.json());
+      return result;
+    },
+    GETNORMALHINTS: async (userID, likePersonTwitterID, hintContent) => {
+      const result = await fetch(`http://localhost:8887/hints/${userID}/${likePersonTwitterID}?content=${hintContent}`, {
+        method: 'GET',
       }).then(response => response.json());
       return result;
     },
