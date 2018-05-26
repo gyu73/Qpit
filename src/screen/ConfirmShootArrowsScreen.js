@@ -10,7 +10,7 @@ import { Avatar, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Entypo';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
+import { compose, withHandlers } from 'recompose';
 
 import Actions from '../../actions/';
 
@@ -69,7 +69,7 @@ function ConfirmShootArrowsScreen(props: Props) {
         color="#ffffff"
       />
       <Button
-        onPress={() => navigation.navigate('ShootArrowResults', { hint })}
+        onPress={() => props.handleShootArrow()}
         title={hint.title_jp}
         buttonStyle={styles.buttonStyle}
         color={hint_type === 'secret' ? '#ffffff' : '#FF69B4'}
@@ -88,13 +88,27 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       ...Actions.users,
+      ...Actions.secrethints,
     },
     dispatch,
   );
 
-const Enhance = compose(connect(
-  mapStateToProps,
-  mapDispatchToProps,
-));
+const Enhance = compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
+  withHandlers({
+    handleShootArrow: props => () => {
+      const { hint, hint_type } = props.navigation.state.params;
+      if (hint_type === 'secret') {
+        props.getstersecrethints(props.users.id, props.users.like_person_twitter_id, hint.title_en);
+      } else {
+        console.log('ノーマルヒントの検索');
+      }
+      props.navigation.navigate('ShootArrowResults', { hint });
+    },
+  }),
+);
 
 export default Enhance(ConfirmShootArrowsScreen);

@@ -8,7 +8,7 @@ export default createActions({
         .then(response => response[0]);
       return result;
     },
-    REGISTERLIKEPERSON: async (like_person_twitter_id, userID) => {
+    REGISTERLIKEPERSON: async (likePersonTwitterID, userID) => {
       const result = await fetch('http://localhost:8887/users', {
         method: 'PUT',
         headers: {
@@ -27,6 +27,12 @@ export default createActions({
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: `${hint}=${value}&useer_id=${userID}`,
+      }).then(response => response.json());
+      return result;
+    },
+    GETSTERSECRETHINTS: async (userID, likePersonTwitterID, hintContent) => {
+      const result = await fetch(`http://localhost:8887/secret_hints/${userID}/${likePersonTwitterID}?content=${hintContent}`, {
+        method: 'GET',
       }).then(response => response.json());
       return result;
     },

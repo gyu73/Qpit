@@ -7,6 +7,9 @@ const secret_hints = handleActions(
     [Actions.secrethints.registersecrethints](state, action) {
       return Object.assign({}, state, action.payload);
     },
+    [Actions.secrethints.registersecrethints](state, action) {
+      return Object.assign({}, state, action.payload);
+    },
   },
   {
     id: 2,
