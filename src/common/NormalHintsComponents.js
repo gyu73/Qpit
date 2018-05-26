@@ -27,7 +27,7 @@ function normalHintsComponents(props) {
   return config.normalHints.map((hint, index) => (
     <Button
       key="${hint.title_jp} ${index}"
-      onPress={() => navigation.navigate(navigatePlace, { hint })}
+      onPress={() => navigation.navigate(navigatePlace, { hint, hint_type: 'normal' })}
       title={hint.title_jp}
       buttonStyle={styles.normalHintButtonStyle}
       color="#FF69B4"

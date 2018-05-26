@@ -26,7 +26,7 @@ function secretHintsComponents(props) {
   return config.secretHints.map((hint, index) => (
     <Button
       key="${hints} ${index}"
-      onPress={() => navigation.navigate(navigatePlace, { hint })}
+      onPress={() => navigation.navigate(navigatePlace, { hint, hint_type: 'secret' })}
       title={hint.title_jp}
       buttonStyle={styles.secretHintButtonStyle}
       color="#ffffff"

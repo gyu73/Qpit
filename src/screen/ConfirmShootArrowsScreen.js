@@ -27,7 +27,7 @@ import Actions from '../../actions/';
 
 
 function ConfirmShootArrowsScreen(props: Props) {
-  const { hint } = props.navigation.state.params;
+  const { hint, hint_type } = props.navigation.state.params;
   const { navigation } = props;
   const styles = StyleSheet.create({
     container: {
@@ -42,7 +42,7 @@ function ConfirmShootArrowsScreen(props: Props) {
       borderColor: 'transparent',
       borderWidth: 0,
       borderRadius: 30,
-      backgroundColor: '#ffffff',
+      backgroundColor: hint_type === 'secret' ? '#FF1493' : '#ffffff',
       marginTop: 20,
       shadowOffset: { width: 4, height: 4 },
       shadowColor: 'black',
@@ -72,7 +72,7 @@ function ConfirmShootArrowsScreen(props: Props) {
         onPress={() => navigation.navigate('ShootArrowResults', { hint })}
         title={hint.title_jp}
         buttonStyle={styles.buttonStyle}
-        color="#FF69B4"
+        color={hint_type === 'secret' ? '#ffffff' : '#FF69B4'}
         fontWeight="900"
         fontSize="14"
       />
