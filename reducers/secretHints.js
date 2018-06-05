@@ -4,6 +4,9 @@ import Actions from '../actions/';
 
 const secret_hints = handleActions(
   {
+    [Actions.secrethints.getusersecrethints](state, action) {
+      return Object.assign({}, state, action.payload);
+    },
     [Actions.secrethints.registersecrethints](state, action) {
       return Object.assign({}, state, action.payload);
     },
@@ -12,14 +15,17 @@ const secret_hints = handleActions(
     },
   },
   {
-    id: 2,
-    like_person_initial: 'T. K.',
-    class: '3年4組',
-    familiar: true,
-    contact_line: true,
-    like_person_nickname: 'タロちゃん',
-    first_meeting: '体育祭',
-    users_id: 1,
+    id: 0,
+    like_person_initial: '',
+    classroom: '',
+    familiar: '',
+    contact_line: '',
+    like_person_nickname: '',
+    first_meeting: '',
+    user_id: 0,
+    hint_id: 0,
+    created_at: '',
+    updated_at: '',
   },
 );
 

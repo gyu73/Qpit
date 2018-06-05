@@ -3,9 +3,9 @@ import { createActions } from 'redux-actions';
 export default createActions({
   USERS: {
     GETUSERINFO: async () => {
-      const result = await fetch('http://localhost:8887/users')
+      const result = await fetch('https://qpit.herokuapp.com/api/users/2')
         .then(response => response.json())
-        .then(response => response[0]);
+        .then(response => response.user);
       return result;
     },
     REGISTERLIKEPERSON: async (likePersonTwitterID, userID) => {
@@ -20,6 +20,12 @@ export default createActions({
     },
   },
   SECRETHINTS: {
+    GETUSERSECRETHINTS: async () => {
+      const result = await fetch('https://qpit.herokuapp.com/api/users/2')
+        .then(response => response.json())
+        .then(response => response.secret_hint);
+      return result;
+    },
     REGISTERSECRETHINTS: async (hint, value, userID) => {
       const result = await fetch('http://localhost:8887/secret_hints', {
         method: 'PUT',
@@ -38,6 +44,12 @@ export default createActions({
     },
   },
   NORMALHINTS: {
+    GETUSERNORMALHINTS: async () => {
+      const result = await fetch('https://qpit.herokuapp.com/api/users/2')
+        .then(response => response.json())
+        .then(response => response.hint);
+      return result;
+    },
     REGISTERNORMALHINTS: async (hint, value, userID) => {
       const result = await fetch('http://localhost:8887/hints', {
         method: 'PUT',

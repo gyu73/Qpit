@@ -11,16 +11,21 @@ const users = handleActions(
       return Object.assign({}, state, action.payload);
     },
   },
-  // todo 以下テストデータなので書き換える必要あり
   {
-    id: 1,
-    like_person_twitter_id: 'gyu73',
-    like_person_profile_image: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-    last_shoot_arrow_time: '2005-12-21 00:00:00.000',
-    profile_image: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-    stock_arrow: 3,
-    coming_arrow: 10,
-    twitter_id: 'gyu73',
+    coming_arrow_number: 0,
+    created_at: '',
+    email: '',
+    id: 0,
+    image: '',
+    last_shoot_time: '',
+    like_person_id: '',
+    like_person_twitter_profile_image: '',
+    name: '',
+    nickname: '',
+    provider: '',
+    stock_arrow: 0,
+    uid: '',
+    updated_at: '',
   },
 );
 

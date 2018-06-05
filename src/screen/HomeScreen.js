@@ -26,8 +26,8 @@ type Props = {
 
 function HomeScreen(props: Props) {
   const {
-    profile_image,
-    twitter_id,
+    image,
+    name,
   } = props.users;
 
   const styles = StyleSheet.create({
@@ -56,10 +56,10 @@ function HomeScreen(props: Props) {
       <Avatar
         large
         rounded
-        source={{ uri: `${profile_image}` }}
+        source={{ uri: `${image}` }}
         activeOpacity={0.7}
       />
-      <Text style={{ paddingTop: 20, color: '#ffffff' }}>{twitter_id}</Text>
+      <Text style={{ paddingTop: 20, color: '#ffffff' }}>{name}</Text>
       <Button
         onPress={() => props.navigation.navigate('RegisterLikePerson')}
         title="好きな人を登録する"
@@ -92,6 +92,8 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       ...Actions.users,
+      ...Actions.normalhints,
+      ...Actions.secrethints,
     },
     dispatch,
   );
@@ -104,6 +106,8 @@ const Enhance = compose(
   lifecycle({
     componentWillMount() {
       this.props.getuserinfo();
+      this.props.getusernormalhints();
+      this.props.getusersecrethints();
     },
   }),
 );
