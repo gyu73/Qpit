@@ -106,8 +106,6 @@ const Enhance = compose(
   lifecycle({
     componentWillMount() {
       this.props.getuserinfo();
-      this.props.getusernormalhints();
-      this.props.getusersecrethints();
     },
   }),
 );

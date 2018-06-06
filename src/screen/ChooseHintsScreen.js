@@ -11,7 +11,12 @@ import {
   SecretHintsComponents,
 } from '../common/';
 
-function ChooseHintsScreen(props) {
+type Props = {
+  navigation: Object,
+}
+
+function ChooseHintsScreen(props: Props) {
+  const { navigation } = props;
   const styles = StyleSheet.create({
     container: {
       backgroundColor: '#FF69B4',
@@ -24,11 +29,11 @@ function ChooseHintsScreen(props) {
     <ScrollView contentContainerStyle={styles.container}>
       <SecretHintsComponents
         navigatePlace="ConfirmShootArrows"
-        navigation={props.navigation}
+        navigation={navigation}
       />
       <NormalHintsComponents
         navigatePlace="ConfirmShootArrows"
-        navigation={props.navigation}
+        navigation={navigation}
       />
     </ScrollView>
   );

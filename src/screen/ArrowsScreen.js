@@ -14,12 +14,19 @@ import { compose } from 'recompose';
 import Actions from '../../actions/';
 
 type Props = {
+  users: {
+    like_person_profile_image: string,
+    like_person_twitter_id: string,
+  },
   navigation: {
     navigate: func
   }
 }
 
 function ArrowsScreen(props: Props) {
+  const { like_person_profile_image, like_person_twitter_id } = props.users;
+  const { navigate } = props.navigation;
+
   const styles = StyleSheet.create({
     container: {
       height: '100%',
@@ -46,12 +53,12 @@ function ArrowsScreen(props: Props) {
       <Avatar
         large
         rounded
-        source={{ uri: props.users.like_person_profile_image }}
+        source={{ uri: like_person_profile_image }}
         activeOpacity={0.7}
       />
-      <Text style={{ paddingTop: 20, color: '#ffffff' }}>{props.users.like_person_twitter_id}</Text>
+      <Text style={{ paddingTop: 20, color: '#ffffff' }}>{like_person_twitter_id}</Text>
       <Button
-        onPress={() => props.navigation.navigate('ChooseHints')}
+        onPress={() => navigate('ChooseHints')}
         title="矢を飛ばす"
         buttonStyle={styles.buttonStyle}
         color="#FF69B4"

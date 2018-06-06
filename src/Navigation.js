@@ -20,6 +20,7 @@ const TabPageScreen = TabNavigator({
 });
 
 const Navigation = StackNavigator({
+  Top: { screen: TopScreen },
   Tab: { screen: TabPageScreen },
   RegisterHints: { screen: RegisterHintsScreen },
   RegisterSecretHints: { screen: RegisterSecretsHintsScreen },

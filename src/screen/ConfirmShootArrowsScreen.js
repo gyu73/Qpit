@@ -15,20 +15,26 @@ import { compose, withHandlers } from 'recompose';
 import Actions from '../../actions/';
 
   type Props = {
+    users: {
+      like_person_profile_image: string,
+      like_person_twitter_id: string,
+    },
     navigation: {
-      navigate: func,
       state: {
         params: {
-          hint: object,
+          hint: Object,
+          hint_type: string,
         }
       }
-    }
+    },
+    handleShootArrow: func,
   }
 
 
 function ConfirmShootArrowsScreen(props: Props) {
+  const { like_person_profile_image, like_person_twitter_id } = props.users;
   const { hint, hint_type } = props.navigation.state.params;
-  const { navigation } = props;
+  const { handleShootArrow } = props;
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -54,10 +60,10 @@ function ConfirmShootArrowsScreen(props: Props) {
       <Avatar
         large
         rounded
-        source={{ uri: props.users.like_person_profile_image }}
+        source={{ uri: like_person_profile_image }}
         activeOpacity={0.7}
       />
-      <Text style={{ paddingTop: 20, color: '#ffffff' }}>{props.users.like_person_twitter_id}</Text>
+      <Text style={{ paddingTop: 20, color: '#ffffff' }}>{like_person_twitter_id}</Text>
       <Icon
         name="heart-outlined"
         size={50}
@@ -69,7 +75,7 @@ function ConfirmShootArrowsScreen(props: Props) {
         color="#ffffff"
       />
       <Button
-        onPress={() => props.handleShootArrow()}
+        onPress={() => handleShootArrow()}
         title={hint.title_jp}
         buttonStyle={styles.buttonStyle}
         color={hint_type === 'secret' ? '#ffffff' : '#FF69B4'}
@@ -101,13 +107,16 @@ const Enhance = compose(
   ),
   withHandlers({
     handleShootArrow: props => () => {
+      const { getsecrethints, getnormalhints, navigation } = props;
+      const { id, like_person_twitter_id } = props.users;
       const { hint, hint_type } = props.navigation.state.params;
+
       if (hint_type === 'secret') {
-        props.getsecrethints(props.users.id, props.users.like_person_twitter_id, hint.title_en);
+        getsecrethints(id, like_person_twitter_id, hint.title_en);
       } else {
-        props.getnormalhints(props.users.id, props.users.like_person_twitter_id, hint.title_en);
+        getnormalhints(id, like_person_twitter_id, hint.title_en);
       }
-      props.navigation.navigate('ShootArrowResults', { hint, hint_type });
+      navigation.navigate('ShootArrowResults', { hint, hint_type });
     },
   }),
 );
