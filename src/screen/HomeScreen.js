@@ -26,7 +26,7 @@ type Props = {
 
 function HomeScreen(props: Props) {
   const {
-    image,
+    profile_image_url,
     name,
   } = props.users;
 
@@ -56,7 +56,7 @@ function HomeScreen(props: Props) {
       <Avatar
         large
         rounded
-        source={{ uri: `${image}` }}
+        source={{ uri: `${profile_image_url}` }}
         activeOpacity={0.7}
       />
       <Text style={{ paddingTop: 20, color: '#ffffff' }}>{name}</Text>

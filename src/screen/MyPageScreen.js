@@ -46,10 +46,10 @@ function MyPageScreen(props: Props) {
       <Avatar
         large
         rounded
-        source={{ uri: props.users.profile_image }}
+        source={{ uri: props.users.profile_image_url }}
         activeOpacity={0.7}
       />
-      <Text style={{ paddingTop: 20, color: '#ffffff' }}>{props.users.twitter_id}</Text>
+      <Text style={{ paddingTop: 20, color: '#ffffff' }}>{props.users.name}</Text>
       <Text style={{ fontWeight: '900', paddingTop: 20, color: '#ffffff' }}>届いた矢</Text>
       <Text style={{ fontWeight: '900', color: '#ffffff' }}>合計{props.users.coming_arrow}本</Text>
       <Button
