@@ -4,6 +4,12 @@ import Actions from '../actions/';
 
 const users = handleActions(
   {
+    [Actions.users.tokenset](state, action) {
+      return Object.assign({}, state, action.payload);
+    },
+    [Actions.users.userset](state, action) {
+      return Object.assign({}, state, action.user);
+    },
     [Actions.users.getuserinfo](state, action) {
       return Object.assign({}, state, action.payload);
     },
@@ -13,19 +19,17 @@ const users = handleActions(
   },
   {
     coming_arrow_number: 0,
-    created_at: '',
-    email: '',
     id: 0,
-    image: '',
     last_shoot_time: '',
-    like_person_id: '',
+    like_person_screen_name: '', // @で始まる相手のアカウント名
     like_person_twitter_profile_image: '',
-    name: '',
-    nickname: '',
-    provider: '',
     stock_arrow: 0,
-    uid: '',
-    updated_at: '',
+    name: '',
+    profile_image_url_https: '',
+    screen_name: '', // @で始まるアカウント名
+    uid: 0, // twitterのid
+    token: '',
+    token_secret: '',
   },
 );
 

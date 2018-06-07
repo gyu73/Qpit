@@ -1,29 +1,39 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import devToolsEnhancer from 'remote-redux-devtools';
-import promiseMiddleware from 'redux-promise';
-import reducer from './reducers/';
+import { AppLoading, Asset, Font, Constants } from 'expo';
+import ToNavigation from './src/ToNavigtion';
+import { consumerKey, secretKey } from './.env';
 
-import Navigation from './src/Navigation';
+/* npm */
+import twitter from 'react-native-simple-twitter';
 
-const middleWare = [
-  promiseMiddleware,
-];
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-const store = createStore(
-  reducer,
-  devToolsEnhancer(),
-  applyMiddleware(...middleWare),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);
+    this.state = {
+      isLoadingComplete: false,
+    };
+  }
 
-function App() {
-  return (
-    <Provider store={store}>
-      <Navigation />
-    </Provider>
-  );
+  _loadResourcesAsync = async () => Promise.all([
+    // Asset.loadAsync([
+    //   require('rnstexampleapp/assets/images/icon.png'),
+    //   require('rnstexampleapp/assets/images/ok_man.png'),
+    // ]),
+    twitter.setConsumerKey(consumerKey, secretKey),
+  ]);
+
+  render() {
+    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
+      return (
+        <AppLoading
+          startAsync={this._loadResourcesAsync}
+          onError={error => console.warn(error)}
+          onFinish={() => this.setState({ isLoadingComplete: true })}
+        />
+      );
+    }
+
+    return <ToNavigation />;
+  }
 }
-
-export default App;

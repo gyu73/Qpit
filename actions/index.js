@@ -2,6 +2,11 @@ import { createActions } from 'redux-actions';
 
 export default createActions({
   USERS: {
+    TOKENSET: (token, secret_token) => {
+      const payload = ({ token, secret_token });
+      return payload;
+    },
+    USERSET: user => ({ user }),
     GETUSERINFO: async () => {
       const result = await fetch('https://qpit.herokuapp.com/api/users/2')
         .then(response => response.json())
