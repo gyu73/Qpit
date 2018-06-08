@@ -26,7 +26,7 @@ type Props = {
 
 function HomeScreen(props: Props) {
   const {
-    profile_image_url,
+    profile_image_url_https,
     name,
   } = props.users;
 
@@ -56,7 +56,7 @@ function HomeScreen(props: Props) {
       <Avatar
         large
         rounded
-        source={{ uri: `${profile_image_url}` }}
+        source={{ uri: `${profile_image_url_https}` }}
         activeOpacity={0.7}
       />
       <Text style={{ paddingTop: 20, color: '#ffffff' }}>{name}</Text>
@@ -105,7 +105,7 @@ const Enhance = compose(
   ),
   lifecycle({
     componentWillMount() {
-      this.props.getuserinfo();
+      this.props.createorget(this.props.users);
     },
   }),
 );

@@ -16,6 +16,9 @@ const users = handleActions(
     [Actions.users.registerlikeperson](state, action) {
       return Object.assign({}, state, action.payload);
     },
+    [Actions.users.createorget](state, action) {
+      return Object.assign({}, state, action.payload);
+    },
   },
   {
     coming_arrow_number: 0,

@@ -2,6 +2,19 @@ import { createActions } from 'redux-actions';
 
 export default createActions({
   USERS: {
+    CREATEORGET: async (user) => {
+      const result = await fetch('http://localhost:3000/api/users', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `user=${JSON.stringify(user)}`,
+      })
+        .then(response => response.json())
+        .then(response => response.user);
+      return result;
+    },
     TOKENSET: (token, secret_token) => {
       const payload = ({ token, secret_token });
       return payload;

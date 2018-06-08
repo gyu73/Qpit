@@ -49,7 +49,7 @@ class TopScreen extends React.Component {
   }
 
   onSuccess = (user) => {
-    this.props.dispatch({ type: 'USERS/USERSET', user });
+    // this.props.dispatch({ type: 'USERS/USERSET', user });
 
     Alert.alert(
       'Success',
