@@ -94,7 +94,6 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       ...Actions.users,
-      ...Actions.secrethints,
       ...Actions.normalhints,
     },
     dispatch,
@@ -107,14 +106,14 @@ const Enhance = compose(
   ),
   withHandlers({
     handleShootArrow: props => () => {
-      const { getsecrethints, getnormalhints, navigation } = props;
-      const { id, like_person_twitter_id } = props.users;
+      const { getlikepersonsecrethints, getlikepersonnormalhints, navigation } = props;
+      const { id, screen_name } = props.users;
       const { hint, hint_type } = props.navigation.state.params;
 
       if (hint_type === 'secret') {
-        getsecrethints(id, like_person_twitter_id, hint.title_en);
+        getlikepersonsecrethints(id, screen_name, hint.title_en);
       } else {
-        getnormalhints(id, like_person_twitter_id, hint.title_en);
+        getlikepersonnormalhints(id, like_person_twitter_id, hint.title_en);
       }
       navigation.navigate('ShootArrowResults', { hint, hint_type });
     },

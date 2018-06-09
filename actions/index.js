@@ -37,6 +37,12 @@ export default createActions({
       }).then(response => response.json()).then(response => response.user);
       return result;
     },
+    GETLIKEPERSONSECRETHINTS: async (userID, screenName, hintContent) => {
+      const result = await fetch(`http://localhost:3000/api/users/${userID}/likeperson/secret-hint?content=${hintContent}`, {
+        method: 'GET',
+      }).then(response => response.json()).then(response => response.answer);
+      return { like_person_hint_answer: result };
+    },
   },
   SECRETHINTS: {
     GETUSERSECRETHINTS: async () => {
@@ -53,12 +59,6 @@ export default createActions({
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: `answer=${value}`,
-      }).then(response => response.json());
-      return result;
-    },
-    GETSECRETHINTS: async (userID, likePersonTwitterID, hintContent) => {
-      const result = await fetch(`http://localhost:8887/secret_hints/${userID}/${likePersonTwitterID}?content=${hintContent}`, {
-        method: 'GET',
       }).then(response => response.json());
       return result;
     },
@@ -81,7 +81,7 @@ export default createActions({
       }).then(response => response.json());
       return result;
     },
-    GETNORMALHINTS: async (userID, likePersonTwitterID, hintContent) => {
+    GETLIKEPERSONNORMALHINTS: async (userID, likePersonTwitterID, hintContent) => {
       const result = await fetch(`http://localhost:8887/hints/${userID}/${likePersonTwitterID}?content=${hintContent}`, {
         method: 'GET',
       }).then(response => response.json());

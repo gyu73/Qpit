@@ -19,6 +19,9 @@ const users = handleActions(
     [Actions.users.createorget](state, action) {
       return Object.assign({}, state, action.payload);
     },
+    [Actions.users.getlikepersonsecrethints](state, action) {
+      return Object.assign({}, state, action.payload);
+    },
   },
   {
     coming_arrow_number: 0,
@@ -33,6 +36,7 @@ const users = handleActions(
     uid: 0, // twitterのid
     token: '',
     token_secret: '',
+    like_person_hint_answer: '',
   },
 );
 

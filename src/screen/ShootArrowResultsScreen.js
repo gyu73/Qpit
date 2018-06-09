@@ -7,6 +7,8 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
 
 type Props = {
   navigation: {
@@ -57,7 +59,7 @@ function ShootArrowResultsScreen(props: Props) {
         color={hint_type === 'secret' ? '#ffffff' : '#FF69B4'}
         fontWeight="900"
         fontSize="14"
-        title="ハズレだよ"
+        title={props.users.like_person_hint_answer}
       />
       <Button
         title="ホームに戻る"
@@ -71,4 +73,10 @@ function ShootArrowResultsScreen(props: Props) {
   );
 }
 
-export default ShootArrowResultsScreen;
+const mapStateToProps = state => ({
+  users: state.users,
+});
+
+const Enhance = compose(connect(mapStateToProps));
+
+export default Enhance(ShootArrowResultsScreen);
