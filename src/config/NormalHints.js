@@ -1,6 +1,6 @@
 const normalHints = [
   { title_jp: '好きな人はいる？', title_en: 'has_like_person' },
-  { title_jp: '部活やってる？', title_en: 'belongs_to_club' },
+  { title_jp: '部活やってる？', title_en: 'belong_to_club' },
   { title_jp: '何の部活？', title_en: 'club' },
   { title_jp: '髪型はどんな髪型？', title_en: 'hair_style' },
   { title_jp: '服装はどんなの？', title_en: 'clothing' },

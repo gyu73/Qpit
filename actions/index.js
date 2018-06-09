@@ -71,12 +71,13 @@ export default createActions({
       return result;
     },
     REGISTERNORMALHINTS: async (hint, value, userID) => {
-      const result = await fetch('http://localhost:8887/hints', {
+      const result = await fetch(`http://localhost:3000/api/hints/users/${userID}?content=${hint}`, {
         method: 'PUT',
         headers: {
+          Accept: 'application/x-www-form-urlencoded',
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: `${hint}=${value}&useer_id=${userID}`,
+        body: `answer=${value}`,
       }).then(response => response.json());
       return result;
     },

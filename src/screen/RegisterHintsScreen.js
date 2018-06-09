@@ -81,6 +81,7 @@ function RegisterNormalHintsScreen(props: Props) {
         }}
         type={NormalHints}
         options={options}
+        value={{ normal_hints: props.normal_hints[hint.title_en] }}
       />
       <Button
         title="登録する"
@@ -88,7 +89,7 @@ function RegisterNormalHintsScreen(props: Props) {
         color="#FF69B4"
         fontWeight="900"
         fontSize="14"
-        onPress={() => props.handleRegisterNormalHints(hint.title_jp)}
+        onPress={() => props.handleRegisterNormalHints(hint.title_en)}
       />
     </View>
   );
@@ -116,6 +117,7 @@ const Enhance = compose(
     handleRegisterNormalHints: props => (hint) => {
       const value = this._formRef.getValue().normal_hints;
       props.registernormalhints(hint, value, props.users.id);
+      props.navigation.navigate('Tab');
     },
   }),
 );
