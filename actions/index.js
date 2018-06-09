@@ -40,14 +40,18 @@ export default createActions({
     GETLIKEPERSONNORMALHINTS: async (userID, screenName, hintContent) => {
       const result = await fetch(`http://localhost:3000/api/users/${userID}/likeperson/normal-hint?content=${hintContent}`, {
         method: 'GET',
-      }).then(response => response.json()).then(response => response.answer);
-      return { like_person_hint_answer: result };
+      }).then(response => response.json()).then(response => response);
+      // todo こういうロジックをモデルに書くべき。直接データを書き換えるのはダメ。
+      result.user.like_person_hint_answer = result.answer;
+      return result.user;
     },
     GETLIKEPERSONSECRETHINTS: async (userID, screenName, hintContent) => {
       const result = await fetch(`http://localhost:3000/api/users/${userID}/likeperson/secret-hint?content=${hintContent}`, {
         method: 'GET',
-      }).then(response => response.json()).then(response => response.answer);
-      return { like_person_hint_answer: result };
+      }).then(response => response.json()).then(response => response);
+      // todo こういうロジックをモデルに書くべき。直接データを書き換えるのはダメ。
+      result.user.like_person_hint_answer = result.answer;
+      return result.user;
     },
   },
   SECRETHINTS: {
