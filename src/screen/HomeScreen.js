@@ -34,7 +34,7 @@ function HomeScreen(props: Props) {
     container: {
       backgroundColor: '#FF69B4',
       alignItems: 'center',
-      paddingTop: 20,
+      paddingTop: 40,
       paddingBottom: 20,
     },
     buttonStyle: {

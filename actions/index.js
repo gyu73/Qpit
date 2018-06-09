@@ -37,6 +37,12 @@ export default createActions({
       }).then(response => response.json()).then(response => response.user);
       return result;
     },
+    GETLIKEPERSONNORMALHINTS: async (userID, screenName, hintContent) => {
+      const result = await fetch(`http://localhost:3000/api/users/${userID}/likeperson/normal-hint?content=${hintContent}`, {
+        method: 'GET',
+      }).then(response => response.json()).then(response => response.answer);
+      return { like_person_hint_answer: result };
+    },
     GETLIKEPERSONSECRETHINTS: async (userID, screenName, hintContent) => {
       const result = await fetch(`http://localhost:3000/api/users/${userID}/likeperson/secret-hint?content=${hintContent}`, {
         method: 'GET',

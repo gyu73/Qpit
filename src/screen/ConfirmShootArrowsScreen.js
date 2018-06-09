@@ -94,7 +94,6 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       ...Actions.users,
-      ...Actions.normalhints,
     },
     dispatch,
   );
@@ -113,7 +112,7 @@ const Enhance = compose(
       if (hint_type === 'secret') {
         getlikepersonsecrethints(id, screen_name, hint.title_en);
       } else {
-        getlikepersonnormalhints(id, like_person_twitter_id, hint.title_en);
+        getlikepersonnormalhints(id, screen_name, hint.title_en);
       }
       navigation.navigate('ShootArrowResults', { hint, hint_type });
     },

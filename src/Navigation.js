@@ -21,7 +21,12 @@ const TabPageScreen = TabNavigator({
 
 const Navigation = StackNavigator({
   Top: { screen: TopScreen },
-  Tab: { screen: TabPageScreen },
+  Tab: {
+    screen: TabPageScreen,
+    navigationOptions: () => ({
+      header: null,
+    }),
+  },
   RegisterHints: { screen: RegisterHintsScreen },
   RegisterSecretHints: { screen: RegisterSecretsHintsScreen },
   RegisterLikePerson: { screen: RegisterLikePersonScreen },

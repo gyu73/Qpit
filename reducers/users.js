@@ -22,6 +22,9 @@ const users = handleActions(
     [Actions.users.getlikepersonsecrethints](state, action) {
       return Object.assign({}, state, action.payload);
     },
+    [Actions.users.getlikepersonnormalhints](state, action) {
+      return Object.assign({}, state, action.payload);
+    },
   },
   {
     coming_arrow_number: 0,
