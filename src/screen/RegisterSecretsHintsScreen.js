@@ -81,6 +81,7 @@ function RegisterSecretHintsScreen(props: Props) {
         }}
         type={SecretHints}
         options={options}
+        value={{ secret_hints: props.secret_hints[hint.title_en] }}
       />
       <Button
         title="登録する"
@@ -88,7 +89,7 @@ function RegisterSecretHintsScreen(props: Props) {
         color="#ffffff"
         fontWeight="900"
         fontSize="14"
-        onPress={() => props.handleRegisterSecretHints(hint.title_jp)}
+        onPress={() => props.handleRegisterSecretHints(hint.title_en)}
       />
     </View>
   );
