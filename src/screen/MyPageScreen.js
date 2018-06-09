@@ -51,7 +51,9 @@ function MyPageScreen(props: Props) {
       />
       <Text style={{ paddingTop: 20, color: '#ffffff' }}>{props.users.name}</Text>
       <Text style={{ fontWeight: '900', paddingTop: 20, color: '#ffffff' }}>届いた矢</Text>
-      <Text style={{ fontWeight: '900', color: '#ffffff' }}>合計{props.users.coming_arrow}本</Text>
+      <Text style={{ fontWeight: '900', color: '#ffffff' }}>合計{props.users.coming_arrow_number}本</Text>
+      <Text style={{ fontWeight: '900', paddingTop: 20, color: '#ffffff' }}>残りの矢</Text>
+      <Text style={{ fontWeight: '900', color: '#ffffff' }}>合計{props.users.stock_arrow}本</Text>
       <Button
         onPress={() => props.navigation.navigate('RegisterLikePerson')}
         title="ログアウトする"

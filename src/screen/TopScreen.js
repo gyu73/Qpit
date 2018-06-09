@@ -35,7 +35,7 @@ class TopScreen extends React.Component {
         this.props.dispatch(NavigationActions.reset({
           index: 0,
           actions: [
-            NavigationActions.navigate({ routeName: 'Tab' }),
+            NavigationActions.navigate({ routeName: 'Top' }),
           ],
         }));
       } catch (err) {
@@ -49,7 +49,7 @@ class TopScreen extends React.Component {
   }
 
   onSuccess = (user) => {
-    // this.props.dispatch({ type: 'USERS/USERSET', user });
+    this.props.dispatch({ type: 'USERS/USERSET', user });
 
     Alert.alert(
       'Success',

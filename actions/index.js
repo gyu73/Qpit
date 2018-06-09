@@ -26,14 +26,15 @@ export default createActions({
         .then(response => response.user);
       return result;
     },
-    REGISTERLIKEPERSON: async (likePersonTwitterID, userID) => {
-      const result = await fetch('http://localhost:8887/users', {
+    REGISTERLIKEPERSON: async (likePersonScreenName, userID) => {
+      const result = await fetch(`http://localhost:3000/api/users/${userID}/like-person`, {
         method: 'PUT',
         headers: {
+          Accept: 'application/x-www-form-urlencoded',
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: `like_person_twitter_id=${like_person_twitter_id}&user_id=${userID}`,
-      }).then(response => response.json());
+        body: `like_person_screen_name=${likePersonScreenName}`,
+      }).then(response => response.json()).then(response => response.user);
       return result;
     },
   },

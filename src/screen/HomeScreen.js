@@ -105,7 +105,8 @@ const Enhance = compose(
   ),
   lifecycle({
     componentWillMount() {
-      this.props.createorget(this.props.users);
+      login_user = this.props.users;
+      this.props.createorget(login_user);
     },
   }),
 );
