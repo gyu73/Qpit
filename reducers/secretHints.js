@@ -4,7 +4,7 @@ import Actions from '../actions/';
 
 const secret_hints = handleActions(
   {
-    [Actions.secrethints.getusersecrethints](state, action) {
+    [Actions.secrethints.getsecrethints](state, action) {
       return Object.assign({}, state, action.payload);
     },
     [Actions.secrethints.registersecrethints](state, action) {

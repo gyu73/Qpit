@@ -4,7 +4,7 @@ import Actions from '../actions/';
 
 const normal_hints = handleActions(
   {
-    [Actions.normalhints.getusernormalhints](state, action) {
+    [Actions.normalhints.getnormalhints](state, action) {
       return Object.assign({}, state, action.payload);
     },
     [Actions.normalhints.registernormalhints](state, action) {

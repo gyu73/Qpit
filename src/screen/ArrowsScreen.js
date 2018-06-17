@@ -9,7 +9,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Avatar, Button } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
+import { compose, withHandlers } from 'recompose';
 
 import Actions from '../../actions/';
 
@@ -58,7 +58,7 @@ function ArrowsScreen(props: Props) {
       />
       <Text style={{ paddingTop: 20, color: '#ffffff' }}>{like_person_screen_name}</Text>
       <Button
-        onPress={() => navigate('ChooseHints')}
+        onPress={() => props.navigateChooseHintsOrNotEnouchArrows()}
         title="矢を飛ばす"
         buttonStyle={styles.buttonStyle}
         color="#FF69B4"
@@ -81,9 +81,20 @@ const mapDispatchToProps = dispatch =>
     dispatch,
   );
 
-const Enhance = compose(connect(
-  mapStateToProps,
-  mapDispatchToProps,
-));
+const Enhance = compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
+  withHandlers({
+    navigateChooseHintsOrNotEnouchArrows: props => () => {
+      if (props.users.stock_arrow > 0) {
+        props.navigation.navigate('ChooseHints');
+      } else {
+        props.navigation.navigate('NotEnouchArrows');
+      }
+    },
+  }),
+);
 
 export default Enhance(ArrowsScreen);

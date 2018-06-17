@@ -117,6 +117,7 @@ const Enhance = compose(
     handleRegisterSecretHints: props => (hint) => {
       const value = this._formRef.getValue().secret_hints;
       props.registersecrethints(hint, value, props.users.id);
+      props.navigation.navigate('Tab');
     },
   }),
 );

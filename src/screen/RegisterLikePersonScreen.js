@@ -81,6 +81,7 @@ function RegisterLikePersonScreen(props) {
         }}
         type={LikePerson}
         options={options}
+        value={{ like_person: props.users.like_person_screen_name }}
       />
       <Button
         title="登録する"
@@ -116,11 +117,6 @@ const Enhance = compose(
       const value = this._formRef.getValue().like_person;
       props.registerlikeperson(value, props.users.id);
       props.navigation.navigate('Tab');
-    },
-  }),
-  lifecycle({
-    componentWillMount() {
-      this.props.getuserinfo();
     },
   }),
 );

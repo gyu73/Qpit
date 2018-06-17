@@ -86,6 +86,8 @@ function HomeScreen(props: Props) {
 
 const mapStateToProps = state => ({
   users: state.users,
+  secrethints: state.secret_hints,
+  hints: state.normal_hints,
 });
 
 const mapDispatchToProps = dispatch =>
@@ -104,9 +106,11 @@ const Enhance = compose(
     mapDispatchToProps,
   ),
   lifecycle({
-    componentWillMount() {
+    async componentWillMount() {
       login_user = this.props.users;
-      this.props.createorget(login_user);
+      await this.props.createorget(login_user);
+      await this.props.getsecrethints(this.props.users.id);
+      await this.props.getnormalhints(this.props.users.id);
     },
   }),
 );

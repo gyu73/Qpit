@@ -55,10 +55,9 @@ export default createActions({
     },
   },
   SECRETHINTS: {
-    GETUSERSECRETHINTS: async () => {
-      const result = await fetch('https://qpit.herokuapp.com/api/users/2')
-        .then(response => response.json())
-        .then(response => response.secret_hint);
+    GETSECRETHINTS: async (userID) => {
+      const result = await fetch(`http://localhost:3000/api/secret_hints/users/${userID}`)
+        .then(response => response.json());
       return result;
     },
     REGISTERSECRETHINTS: async (hint, value, userID) => {
@@ -74,10 +73,9 @@ export default createActions({
     },
   },
   NORMALHINTS: {
-    GETUSERNORMALHINTS: async () => {
-      const result = await fetch('https://qpit.herokuapp.com/api/users/2')
-        .then(response => response.json())
-        .then(response => response.hint);
+    GETNORMALHINTS: async (userID) => {
+      const result = await fetch(`http://localhost:3000/api/hints/users/${userID}`)
+        .then(response => response.json());
       return result;
     },
     REGISTERNORMALHINTS: async (hint, value, userID) => {
