@@ -7,6 +7,7 @@ import {
   MyPageScreen,
   NotEnouchArrowsScreen,
   NotEnouchHintsScreen,
+  NotRegisterLikePersonScreen,
   RegisterHintsScreen,
   RegisterLikePersonScreen,
   RegisterSecretsHintsScreen,
@@ -40,6 +41,7 @@ const Navigation = StackNavigator({
   ConfirmShootArrows: { screen: ConfirmShootArrowsScreen },
   NotEnouchArrows: { screen: NotEnouchArrowsScreen },
   NotEnouchHints: { screen: NotEnouchHintsScreen },
+  NotRegisterLikePerson: { screen: NotRegisterLikePersonScreen },
   ShootArrowResults: {
     screen: ShootArrowResultsScreen,
     navigationOptions: () => ({

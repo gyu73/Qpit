@@ -94,8 +94,9 @@ const Enhance = compose(
       const normalAnswerHintNumber = hintsArray.filter(h => h !== '').length - 4;
       const secretHintsArray = Object.values(props.secrethints);
       const secretAnswerHintNumber = secretHintsArray.filter(d => d !== '').length - 5;
-
-      if (normalAnswerHintNumber <= 6 || secretAnswerHintNumber === 0 || props.users.stock_arrow === 0) {
+      if (props.users.like_person_screen_name === '') {
+        props.navigation.navigate('NotRegisterLikePerson');
+      } else if (normalAnswerHintNumber <= 6 || secretAnswerHintNumber === 0 || props.users.stock_arrow === 0) {
         if (normalAnswerHintNumber <= 6 || secretAnswerHintNumber === 0) {
           props.navigation.navigate('NotEnouchHints', { normalAnswerHintNumber, secretAnswerHintNumber });
         } else {

@@ -5,11 +5,10 @@
  */
 
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
 
-function NotEnouchHintsScreen(props: Props) {
-  const { normalAnswerHintNumber, secretAnswerHintNumber } = props.navigation.state.params;
+function NotRegisterLikePersonScreen() {
   const styles = StyleSheet.create({
     container: {
       height: '100%',
@@ -38,20 +37,10 @@ function NotEnouchHintsScreen(props: Props) {
         color="#000000"
         fontWeight="900"
         fontSize="14"
-        title="答えたヒント数が足りないよ。たくさんのヒントに答えてね！"
+        title="好きな人を登録してないよ！好きな人を登録して矢を飛ばそう！"
       />
-      <Text style={{
- color: '#ffffff', marginTop: 40, fontWeight: '900', fontSize: '18',
-}}
-      >{secretAnswerHintNumber === 0 ? '急接近ヒントの入力が1つ足りません。' : ''}
-      </Text>
-      <Text style={{
- color: '#ffffff', fontWeight: '900', fontSize: '18',
-}}
-      >{normalAnswerHintNumber <= 6 ? `ノーマルヒントの入力が${7 - normalAnswerHintNumber}つ足りません。` : ''}
-      </Text>
     </View>
   );
 }
 
-export default NotEnouchHintsScreen;
+export default NotRegisterLikePersonScreen;
