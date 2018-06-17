@@ -8,7 +8,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Avatar, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
+import { compose, withHandlers } from 'recompose';
 import { bindActionCreators } from 'redux';
 
 import Actions from '../../actions/';
@@ -64,7 +64,7 @@ function MyPageScreen(props: Props) {
       <Text style={{ fontWeight: '900', paddingTop: 20, color: '#ffffff' }}>ヒント記入数</Text>
       <Text style={{ fontWeight: '900', color: '#ffffff' }}>{normalAnswerHintNumber}個</Text>
       <Button
-        onPress={() => props.navigation.navigate('RegisterLikePerson')}
+        onPress={() => props.handleLogOut()}
         title="ログアウトする"
         buttonStyle={styles.buttonStyle}
         color="#FF69B4"
@@ -89,9 +89,17 @@ const mapDispatchToProps = dispatch =>
     dispatch,
   );
 
-const Enhance = compose(connect(
-  mapStateToProps,
-  mapDispatchToProps,
-));
+const Enhance = compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
+  withHandlers({
+    handleLogOut: props => () => {
+      props.logout(props.users.id);
+      props.navigation.navigate('Top');
+    },
+  }),
+);
 
 export default Enhance(MyPageScreen);

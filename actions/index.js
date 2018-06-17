@@ -15,6 +15,11 @@ export default createActions({
         .then(response => response.user);
       return result;
     },
+    LOGOUT: async (userID) => {
+      await fetch(`http://localhost:3000/api/users/${userID}`, {
+        method: 'DELETE',
+      });
+    },
     TOKENSET: (token, secret_token) => {
       const payload = ({ token, secret_token });
       return payload;
