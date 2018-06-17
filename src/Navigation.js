@@ -1,4 +1,7 @@
+import React from 'react';
 import { StackNavigator, TabNavigator } from 'react-navigation';
+import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   ArrowsScreen,
   ChooseHintsScreen,
@@ -15,11 +18,45 @@ import {
   TopScreen,
 } from './screen/';
 
-const TabPageScreen = TabNavigator({
-  Home: { screen: HomeScreen },
-  Arrows: { screen: ArrowsScreen },
-  MyPage: { screen: MyPageScreen },
-});
+const TabPageScreen = TabNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+      navigationOptions: () => ({
+        tabBarIcon: ({ tintColor }) => (<Entypo
+          name="home"
+          size={35}
+          color={tintColor}
+        />),
+      }),
+    },
+    Arrows: {
+      screen: ArrowsScreen,
+      navigationOptions: () => ({
+        tabBarIcon: ({ tintColor }) => (<MaterialCommunityIcon
+          name="arrow-expand-up"
+          size={35}
+          color={tintColor}
+        />),
+      }),
+    },
+    MyPage: {
+      screen: MyPageScreen,
+      navigationOptions: () => ({
+        tabBarIcon: ({ tintColor }) => (<MaterialCommunityIcon
+          name="account"
+          size={35}
+          color={tintColor}
+        />),
+      }),
+    },
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: '#FF69B4',
+    },
+  },
+);
 
 const Navigation = StackNavigator({
   Top: {
