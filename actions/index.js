@@ -20,6 +20,11 @@ export default createActions({
         method: 'DELETE',
       });
     },
+    DELETEUSER: async (userID) => {
+      await fetch(`http://localhost:3000/api/users/${userID}/delete`, {
+        method: 'DELETE',
+      });
+    },
     TOKENSET: (token, secret_token) => {
       const payload = ({ token, secret_token });
       return payload;

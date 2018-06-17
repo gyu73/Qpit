@@ -71,6 +71,14 @@ function MyPageScreen(props: Props) {
         fontWeight="900"
         fontSize="14"
       />
+      <Button
+        onPress={() => props.handleDeleteUser()}
+        title="アカウントを削除する"
+        buttonStyle={styles.buttonStyle}
+        color="#FF69B4"
+        fontWeight="900"
+        fontSize="14"
+      />
     </View>
   );
 }
@@ -97,6 +105,10 @@ const Enhance = compose(
   withHandlers({
     handleLogOut: props => () => {
       props.logout(props.users.id);
+      props.navigation.navigate('Top');
+    },
+    handleDeleteUser: props => () => {
+      props.deleteuser(props.users.id);
       props.navigation.navigate('Top');
     },
   }),
