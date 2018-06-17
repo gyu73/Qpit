@@ -41,6 +41,11 @@ function MyPageScreen(props: Props) {
       shadowOpacity: 0.3,
     },
   });
+  const hintsArray = Object.values(props.hints);
+  const normalAnswerHintNumber = hintsArray.filter(h => h !== '').length - 4;
+
+  const secretHintsArray = Object.values(props.secrethints);
+  const secretAnswerHintNumber = secretHintsArray.filter(d => d !== '').length - 5;
   return (
     <View style={styles.container}>
       <Avatar
@@ -51,9 +56,13 @@ function MyPageScreen(props: Props) {
       />
       <Text style={{ paddingTop: 20, color: '#ffffff' }}>{props.users.name}</Text>
       <Text style={{ fontWeight: '900', paddingTop: 20, color: '#ffffff' }}>届いた矢</Text>
-      <Text style={{ fontWeight: '900', color: '#ffffff' }}>合計{props.users.coming_arrow_number}本</Text>
+      <Text style={{ fontWeight: '900', color: '#ffffff' }}>{props.users.coming_arrow_number}本</Text>
       <Text style={{ fontWeight: '900', paddingTop: 20, color: '#ffffff' }}>残りの矢</Text>
-      <Text style={{ fontWeight: '900', color: '#ffffff' }}>合計{props.users.stock_arrow}本</Text>
+      <Text style={{ fontWeight: '900', color: '#ffffff' }}>{props.users.stock_arrow}本</Text>
+      <Text style={{ fontWeight: '900', paddingTop: 20, color: '#ffffff' }}>急接近ヒント記入数</Text>
+      <Text style={{ fontWeight: '900', color: '#ffffff' }}>{secretAnswerHintNumber}個</Text>
+      <Text style={{ fontWeight: '900', paddingTop: 20, color: '#ffffff' }}>ヒント記入数</Text>
+      <Text style={{ fontWeight: '900', color: '#ffffff' }}>{normalAnswerHintNumber}個</Text>
       <Button
         onPress={() => props.navigation.navigate('RegisterLikePerson')}
         title="ログアウトする"
@@ -68,6 +77,8 @@ function MyPageScreen(props: Props) {
 
 const mapStateToProps = state => ({
   users: state.users,
+  secrethints: state.secret_hints,
+  hints: state.normal_hints,
 });
 
 const mapDispatchToProps = dispatch =>

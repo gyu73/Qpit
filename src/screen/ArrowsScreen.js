@@ -71,6 +71,8 @@ function ArrowsScreen(props: Props) {
 
 const mapStateToProps = state => ({
   users: state.users,
+  secrethints: state.secret_hints,
+  hints: state.normal_hints,
 });
 
 const mapDispatchToProps = dispatch =>
@@ -88,10 +90,19 @@ const Enhance = compose(
   ),
   withHandlers({
     navigateChooseHintsOrNotEnouchArrows: props => () => {
-      if (props.users.stock_arrow > 0) {
-        props.navigation.navigate('ChooseHints');
+      const hintsArray = Object.values(props.hints);
+      const normalAnswerHintNumber = hintsArray.filter(h => h !== '').length - 4;
+      const secretHintsArray = Object.values(props.secrethints);
+      const secretAnswerHintNumber = secretHintsArray.filter(d => d !== '').length - 5;
+
+      if (normalAnswerHintNumber <= 6 || secretAnswerHintNumber === 0 || props.users.stock_arrow === 0) {
+        if (normalAnswerHintNumber <= 6 || secretAnswerHintNumber === 0) {
+          props.navigation.navigate('NotEnouchHints', { normalAnswerHintNumber, secretAnswerHintNumber });
+        } else {
+          props.navigation.navigate('NotEnouchArrows');
+        }
       } else {
-        props.navigation.navigate('NotEnouchArrows');
+        props.navigation.navigate('ChooseHints');
       }
     },
   }),
