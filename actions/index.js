@@ -25,6 +25,13 @@ export default createActions({
         method: 'DELETE',
       });
     },
+    GETARROWSTOCK: async (userID) => {
+      const result = await fetch(`http://localhost:3000/api/users/${userID}/arrow`, {
+        method: 'PUT',
+      })
+        .then(response => response.json());
+      return result;
+    },
     TOKENSET: (token, secret_token) => {
       const payload = ({ token, secret_token });
       return payload;

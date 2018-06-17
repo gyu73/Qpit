@@ -25,6 +25,9 @@ const users = handleActions(
     [Actions.users.getlikepersonnormalhints](state, action) {
       return Object.assign({}, state, action.payload);
     },
+    [Actions.users.getarrowstock](state, action) {
+      return Object.assign({}, state, action.payload);
+    },
   },
   {
     coming_arrow_number: 0,
@@ -34,7 +37,7 @@ const users = handleActions(
     like_person_twitter_profile_image: '',
     stock_arrow: 0,
     name: '',
-    profile_image_url_https: '',
+    profile_image_url_https: '../assets/Qpit.png',
     screen_name: '', // @で始まるアカウント名
     uid: 0, // twitterのid
     token: '',
