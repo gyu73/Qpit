@@ -21,7 +21,12 @@ const TabPageScreen = TabNavigator({
 });
 
 const Navigation = StackNavigator({
-  Top: { screen: TopScreen },
+  Top: {
+    screen: TopScreen,
+    navigationOptions: () => ({
+      header: null,
+    }),
+  },
   Tab: {
     screen: TabPageScreen,
     navigationOptions: () => ({

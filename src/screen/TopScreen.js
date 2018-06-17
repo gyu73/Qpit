@@ -1,12 +1,14 @@
 import React from 'react';
 import {
   View,
+  ScrollView,
   Text,
   Alert,
   StyleSheet,
 } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
+import { SocialIcon, Button } from 'react-native-elements';
 import { Constants } from 'expo';
 import { bindActionCreators } from 'redux';
 import { compose, lifecycle } from 'recompose';
@@ -19,7 +21,6 @@ import twitter, { TWLoginButton, decodeHTMLEntities, getRelativeTime } from 'rea
   user: state.user,
 }))
 class TopScreen extends React.Component {
-
   constructor(props) {
     super(props);
   }
@@ -79,39 +80,98 @@ class TopScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.title}>
-          <Text style={styles.titleText}>Login</Text>
+          <Text style={styles.titleText}>Qpit</Text>
         </View>
         <TWLoginButton
-          style={{ width: '100%', height: 60 }}
+          style={styles.button}
           type="TouchableOpacity"
           onPress={this.onPress}
           onGetAccessToken={this.onGetAccessToken}
           onSuccess={this.onSuccess}
           onClose={this.onClose}
           onError={this.onError}
-        ><Text style={{ textAlign: 'center', color: '#fff' }}>Twitterでログインする</Text>
+        ><SocialIcon
+          title="Twitterログイン"
+          button
+          type="twitter"
+        />
         </TWLoginButton>
-      </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            buttonStyle={styles.buttonStyle}
+            color="#000000"
+            fontWeight="900"
+            fontSize="14"
+            title="自分の好きな人には
+  「恋人はいるのか？」
+  「好きな人はいるのか？」
+  「好きな人のタイプは？」
+  「どんな人がタイプなのか？」
+  気になるけれど
+  なかなか聞き出せませんよね。
+
+  好きな人に告白したいけど
+  「もし両思いじゃなかったら？」
+  なんて、不安になること
+  ありますよねー。
+
+  でももう大丈夫！
+
+  Qpitとは
+  気になるあの子の
+
+  「好きな人」
+
+  についてのヒントを
+  匿名で質問の矢を
+  飛ばして得られる
+  そんな恋の
+  手助けアプリです！
+
+  恋をもっと効率よく
+  もっと確実に。
+
+  当たって砕けろの
+  時代はもう終わり。
+
+  さぁ、気になるあの子に
+  矢を飛ばそう！"
+          />
+        </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: Constants.manifest.primaryColor,
-  },
-  title: {
-    flex: 1,
+    backgroundColor: '#FF69B4',
     padding: 64,
   },
+  title: {
+    alignItems: 'center',
+    padding: 32,
+  },
   titleText: {
-    textAlign: 'center',
     fontSize: 24,
     color: '#fff',
     fontWeight: 'bold',
+  },
+  buttonContainer: {
+    paddingTop: 24,
+    alignItems: 'center',
+  },
+  buttonStyle: {
+    width: 200,
+    borderColor: 'transparent',
+    borderWidth: 0,
+    borderRadius: 30,
+    backgroundColor: '#ffffff',
+    shadowOffset: { width: 4, height: 4 },
+    shadowColor: 'black',
+    shadowOpacity: 0.3,
   },
 });
 
