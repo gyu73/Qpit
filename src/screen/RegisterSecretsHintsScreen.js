@@ -115,8 +115,13 @@ const Enhance = compose(
   ),
   withHandlers({
     handleRegisterSecretHints: props => (hint) => {
-      const value = this._formRef.getValue().secret_hints;
-      props.registersecrethints(hint, value, props.users.id);
+      let value = this._formRef.getValue();
+      if (value) {
+        props.registersecrethints(hint, value.secret_hints, props.users.id);
+      } else {
+        value = '';
+        props.registersecrethints(hint, value, props.users.id);
+      }
       props.navigation.navigate('Tab');
     },
   }),

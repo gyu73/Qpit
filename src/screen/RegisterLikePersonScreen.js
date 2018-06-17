@@ -114,8 +114,13 @@ const Enhance = compose(
   ),
   withHandlers({
     handleRegisterLikePerson: props => () => {
-      const value = this._formRef.getValue().like_person;
-      props.registerlikeperson(value, props.users.id);
+      let value = this._formRef.getValue();
+      if (value) {
+        props.registerlikeperson(value.like_person, props.users.id);
+      } else {
+        value = '';
+        props.registerlikeperson(value, props.users.id);
+      }
       props.navigation.navigate('Tab');
     },
   }),

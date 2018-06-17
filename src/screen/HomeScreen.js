@@ -51,6 +51,9 @@ function HomeScreen(props: Props) {
     },
   });
 
+  console.log(props.users.last_shoot_time);
+  console.log(new Date(props.users.last_shoot_time).getMinutes());
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Avatar

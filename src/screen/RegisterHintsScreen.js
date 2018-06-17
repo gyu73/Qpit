@@ -24,6 +24,7 @@ const options = {
     normal_hints: {
       auto: 'none',
       placeholder: '答えを記入してね',
+      error: 'Insert a valid email',
     },
   },
 };
@@ -115,8 +116,13 @@ const Enhance = compose(
   ),
   withHandlers({
     handleRegisterNormalHints: props => (hint) => {
-      const value = this._formRef.getValue().normal_hints;
-      props.registernormalhints(hint, value, props.users.id);
+      let value = this._formRef.getValue();
+      if (value) {
+        props.registernormalhints(hint, value.normal_hints, props.users.id);
+      } else {
+        value = '';
+        props.registernormalhints(hint, value, props.users.id);
+      }
       props.navigation.navigate('Tab');
     },
   }),
