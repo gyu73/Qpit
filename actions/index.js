@@ -37,8 +37,8 @@ export default createActions({
       return payload;
     },
     USERSET: user => ({ user }),
-    GETUSERINFO: async () => {
-      const result = await fetch('https://qpit.herokuapp.com/api/users/2')
+    GETUSERINFO: async (userID) => {
+      const result = await fetch(`http://localhost:3000/api/users/${userID}`)
         .then(response => response.json())
         .then(response => response.user);
       return result;

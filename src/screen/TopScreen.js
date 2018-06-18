@@ -9,102 +9,114 @@ import {
 import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 import { SocialIcon, Button } from 'react-native-elements';
-import { Constants } from 'expo';
+import Expo from 'expo';
 import { bindActionCreators } from 'redux';
-import { compose, lifecycle } from 'recompose';
+import { compose, lifecycle, withState, withHandlers } from 'recompose';
+
+import Loading from './Loading';
 import Actions from '../../actions/';
 
 /* import twitter */
 import twitter, { TWLoginButton, decodeHTMLEntities, getRelativeTime } from 'react-native-simple-twitter';
 
-@connect(state => ({
-  user: state.user,
-}))
-class TopScreen extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+// @connect(state => ({
+//   user: state.user,
+// }))
 
-  async componentWillMount() {
-    if (this.props.user.token) {
-      twitter.setAccessToken(this.props.user.token, this.props.user.token_secret);
+function TopScreen(props: Props) {
+  // constructor(props) {
+  //   super(props);
+  // }
 
-      try {
-        const user = await twitter.get('account/verify_credentials.json', { include_entities: false, skip_status: true, include_email: true });
-        this.props.dispatch({ type: 'USER_SET', user });
+  // async componentWillMount() {
+  //   if (this.props.user.token) {
+  //     twitter.setAccessToken(this.props.user.token, this.props.user.token_secret);
+  //
+  //     try {
+  //       const user = await twitter.get('account/verify_credentials.json', { include_entities: false, skip_status: true, include_email: true });
+  //       this.props.dispatch({ type: 'USER_SET', user });
+  //
+  //       this.props.dispatch(NavigationActions.reset({
+  //         index: 0,
+  //         actions: [
+  //           NavigationActions.navigate({ routeName: 'Top' }),
+  //         ],
+  //       }));
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  // }
 
-        this.props.dispatch(NavigationActions.reset({
-          index: 0,
-          actions: [
-            NavigationActions.navigate({ routeName: 'Top' }),
-          ],
-        }));
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  }
+  // async componentDidMount() {
+  //   const userID = await Expo.SecureStore.getItemAsync('userID');
+  //   if (userID) {
+  //     const user = await this.props.dispatch({ type: 'USERS/GETUSERINFO', userID });
+  //     console.log('user', user);
+  //     this.props.navigation.navigate('Tab', { userID });
+  //   }
+  // }
 
-  onGetAccessToken = ({ oauth_token, oauth_token_secret }) => {
-    this.props.dispatch({ type: 'USERS/TOKENSET', token: oauth_token, token_secret: oauth_token_secret });
-  }
+  // onGetAccessToken = ({ oauth_token, oauth_token_secret }) => {
+  //   this.props.dispatch({ type: 'USERS/TOKENSET', token: oauth_token, token_secret: oauth_token_secret });
+  // }
 
-  onSuccess = (user) => {
-    this.props.dispatch({ type: 'USERS/USERSET', user });
+  // onSuccess = (user) => {
+  //   this.props.dispatch({ type: 'USERS/USERSET', user });
+  //
+  //   Alert.alert(
+  //     'Success',
+  //     'ログインできました',
+  //     [
+  //       {
+  //         text: 'Go HomeScreen',
+  //         onPress: () => {
+  //           this.props.navigation.navigate('Tab');
+  //         },
+  //       },
+  //     ],
+  //   );
+  // }
 
-    Alert.alert(
-      'Success',
-      'ログインできました',
-      [
-        {
-          text: 'Go HomeScreen',
-          onPress: () => {
-            this.props.navigation.navigate('Tab');
-          },
-        },
-      ],
-    );
-  }
+  // onPress = (e) => {
+  //   console.log('button pressed');
+  // }
+  //
+  // onClose = (e) => {
+  //   console.log('press close button');
+  // }
+  //
+  // onError = (err) => {
+  //   console.log(err);
+  // }
 
-  onPress = (e) => {
-    console.log('button pressed');
-  }
-
-  onClose = (e) => {
-    console.log('press close button');
-  }
-
-  onError = (err) => {
-    console.log(err);
-  }
-
-  render() {
-    return (
-      <ScrollView contentContainerStyle={styles.container}>
-        <View style={styles.title}>
-          <Text style={styles.titleText}>Qpit</Text>
-        </View>
-        <TWLoginButton
-          style={styles.button}
-          type="TouchableOpacity"
-          onPress={this.onPress}
-          onGetAccessToken={this.onGetAccessToken}
-          onSuccess={this.onSuccess}
-          onClose={this.onClose}
-          onError={this.onError}
-        ><SocialIcon
-          title="Twitterログイン"
-          button
-          type="twitter"
-        />
-        </TWLoginButton>
-        <View style={styles.buttonContainer}>
-          <Button
-            buttonStyle={styles.buttonStyle}
-            color="#000000"
-            fontWeight="900"
-            fontSize="14"
-            title="自分の好きな人には
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      {/* <Loading text="ログイン中" isLoading /> */}
+      <View style={styles.title}>
+        <Text style={styles.titleText}>Qpit</Text>
+      </View>
+      <TWLoginButton
+        style={styles.button}
+        type="TouchableOpacity"
+        onPress={this.onPress}
+        onGetAccessToken={this.onGetAccessToken}
+        onSuccess={props.onSuccess}
+        onClose={this.onClose}
+        onError={this.onError}
+      ><SocialIcon
+        title="Twitterログイン"
+        button
+        type="twitter"
+      />
+      </TWLoginButton>
+      <View style={styles.buttonContainer}>
+        <Button
+          buttonStyle={styles.buttonStyle}
+          color="#000000"
+          fontWeight="900"
+          fontSize="14"
+          title="自分の好きな人には
   「恋人はいるのか？」
   「好きな人はいるのか？」
   「好きな人のタイプは？」
@@ -138,11 +150,10 @@ class TopScreen extends React.Component {
 
   さぁ、気になるあの子に
   矢を飛ばそう！"
-          />
-        </View>
-      </ScrollView>
-    );
-  }
+        />
+      </View>
+    </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -183,8 +194,6 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       ...Actions.users,
-      ...Actions.normalhints,
-      ...Actions.secrethints,
     },
     dispatch,
   );
@@ -194,13 +203,45 @@ const Enhance = compose(
     mapStateToProps,
     mapDispatchToProps,
   ),
-  lifecycle({
-    componentWillMount() {
-      this.props.getuserinfo();
+  withState('isLoading', 'isLoadingUpdate', true),
+  withHandlers({
+    onGetAccessToken: props => (oauth_token, oauth_token_secret) => {
+      // console.log(oauth_token);
+      // this.props.tokenset(oauth_token, oauth_token_secret);
+      // this.props.dispatch({ type: 'USERS/TOKENSET', token: oauth_token, token_secret: oauth_token_secret });
     },
+    onSuccess: props => (user) => {
+      props.userset(user);
+      Alert.alert(
+        'Success',
+        'ログインできました',
+        [
+          {
+            text: 'Go HomeScreen',
+            onPress: () => {
+              props.navigation.navigate('Tab');
+            },
+          },
+        ],
+      );
+    },
+    onPress: props => () => {
+      console.log('button pressed');
+    },
+    onClose: props => () => {
+      console.log('press close button');
+    },
+    onError: props => (err) => {
+      console.log(err);
+    },
+  }),
+  lifecycle({
+    // componentWillMount() {
+    //   this.props.getuserinfo();
+    // },
   }),
 );
 
-// export default Enhance(HomeScreen);
+export default Enhance(TopScreen);
 
-export default TopScreen;
+// export default TopScreen;
