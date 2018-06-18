@@ -38,6 +38,7 @@ export default createActions({
     },
     USERSET: user => ({ user }),
     GETUSERINFO: async (userID) => {
+      console.log(userID);
       const result = await fetch(`http://localhost:3000/api/users/${userID}`)
         .then(response => response.json())
         .then(response => response.user);

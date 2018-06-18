@@ -5,6 +5,7 @@
  */
 
 import React from 'react';
+import Expo from 'expo';
 import { ScrollView, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -50,9 +51,6 @@ function HomeScreen(props: Props) {
       shadowOpacity: 0.3,
     },
   });
-
-  console.log(props.users.last_shoot_time);
-  console.log(new Date(props.users.last_shoot_time).getMinutes());
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -110,10 +108,18 @@ const Enhance = compose(
   ),
   lifecycle({
     async componentWillMount() {
-      login_user = this.props.users;
-      await this.props.createorget(login_user);
-      await this.props.getsecrethints(this.props.users.id);
-      await this.props.getnormalhints(this.props.users.id);
+      if (this.props.navigation.state.params) {
+        // 既にログインしている場合の処理
+        await this.props.getsecrethints(this.props.navigation.state.params.userID);
+        await this.props.getnormalhints(this.props.navigation.state.params.userID);
+      } else {
+        // Twitter経由のログイン(初回)
+        login_user = this.props.users;
+        await this.props.createorget(login_user);
+        await this.props.getsecrethints(this.props.users.id);
+        await this.props.getnormalhints(this.props.users.id);
+        Expo.SecureStore.setItemAsync('userID', String(this.props.users.id));
+      }
     },
   }),
 );

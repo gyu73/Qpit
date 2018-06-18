@@ -10,6 +10,7 @@ import { Avatar, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { compose, withHandlers } from 'recompose';
 import { bindActionCreators } from 'redux';
+import Expo from 'expo';
 
 import Actions from '../../actions/';
 
@@ -51,7 +52,7 @@ function MyPageScreen(props: Props) {
       <Avatar
         large
         rounded
-        source={{ uri: props.users.profile_image_url }}
+        source={{ uri: props.users.profile_image_url_https }}
         activeOpacity={0.7}
       />
       <Text style={{ paddingTop: 20, color: '#ffffff' }}>{props.users.name}</Text>
@@ -110,6 +111,7 @@ const Enhance = compose(
     handleDeleteUser: props => () => {
       props.deleteuser(props.users.id);
       props.navigation.navigate('Top');
+      Expo.SecureStore.setItemAsync('userID', '');
     },
   }),
 );

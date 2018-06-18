@@ -8,7 +8,7 @@ const users = handleActions(
       return Object.assign({}, state, action.payload);
     },
     [Actions.users.userset](state, action) {
-      return Object.assign({}, state, action.user);
+      return Object.assign({}, state, action.payload.user);
     },
     [Actions.users.getuserinfo](state, action) {
       return Object.assign({}, state, action.payload);
@@ -43,6 +43,7 @@ const users = handleActions(
     token: '',
     token_secret: '',
     like_person_hint_answer: '',
+    login: false,
   },
 );
 

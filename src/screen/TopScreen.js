@@ -92,7 +92,7 @@ function TopScreen(props: Props) {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* <Loading text="ログイン中" isLoading /> */}
+      <Loading text="ログイン中" isLoading={props.isLoading} />
       <View style={styles.title}>
         <Text style={styles.titleText}>Qpit</Text>
       </View>
@@ -236,9 +236,17 @@ const Enhance = compose(
     },
   }),
   lifecycle({
-    // componentWillMount() {
-    //   this.props.getuserinfo();
-    // },
+    async componentDidMount() {
+      const userID = await Expo.SecureStore.getItemAsync('userID');
+      if (userID) {
+        const user = await this.props.getuserinfo(userID);
+        if (user.payload.login) {
+          this.props.navigation.navigate('Tab', { userID });
+          this.props.isLoadingUpdate(!this.props.isLoading);
+        }
+      }
+      this.props.isLoadingUpdate(!this.props.isLoading);
+    },
   }),
 );
 
