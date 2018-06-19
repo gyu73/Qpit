@@ -24,15 +24,15 @@ function normalHintsComponents(props) {
     navigation,
     navigatePlace,
   } = props;
-  return config.normalHints.map((hint, index) => (
+  return config.normalHints.map(hint => (
     <Button
-      key="${hint.title_jp} ${index}"
+      key={hint.title_jp}
       onPress={() => navigation.navigate(navigatePlace, { hint, hint_type: 'normal' })}
       title={hint.title_jp}
       buttonStyle={styles.normalHintButtonStyle}
       color="#FF69B4"
       fontWeight="900"
-      fontSize="14"
+      fontSize={14}
     />
   ));
 }

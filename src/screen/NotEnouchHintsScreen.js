@@ -37,16 +37,16 @@ function NotEnouchHintsScreen(props: Props) {
         buttonStyle={styles.buttonStyle}
         color="#000000"
         fontWeight="900"
-        fontSize="14"
+        fontSize={14}
         title="答えたヒント数が足りないよ。たくさんのヒントに答えてね！"
       />
       <Text style={{
- color: '#ffffff', marginTop: 40, fontWeight: '900', fontSize: '18',
+ color: '#ffffff', marginTop: 40, fontWeight: '900', fontSize: 18,
 }}
       >{secretAnswerHintNumber === 0 ? '急接近ヒントの入力が1つ足りません。' : ''}
       </Text>
       <Text style={{
- color: '#ffffff', fontWeight: '900', fontSize: '18',
+ color: '#ffffff', fontWeight: '900', fontSize: 18,
 }}
       >{normalAnswerHintNumber <= 6 ? `ノーマルヒントの入力が${7 - normalAnswerHintNumber}つ足りません。` : ''}
       </Text>

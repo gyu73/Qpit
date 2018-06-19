@@ -63,7 +63,7 @@ function ArrowsScreen(props: Props) {
         buttonStyle={styles.buttonStyle}
         color="#FF69B4"
         fontWeight="900"
-        fontSize="14"
+        fontSize={14}
       />
     </View>
   );

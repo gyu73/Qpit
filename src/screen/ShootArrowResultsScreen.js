@@ -52,13 +52,13 @@ function ShootArrowResultsScreen(props: Props) {
         buttonStyle={styles.buttonStyle}
         color={hint_type === 'secret' ? '#ffffff' : '#FF69B4'}
         fontWeight="900"
-        fontSize="14"
+        fontSize={14}
       />
       <Button
         buttonStyle={styles.buttonStyle}
         color={hint_type === 'secret' ? '#ffffff' : '#FF69B4'}
         fontWeight="900"
-        fontSize="14"
+        fontSize={14}
         title={props.users.like_person_hint_answer}
       />
       <Button
@@ -66,7 +66,7 @@ function ShootArrowResultsScreen(props: Props) {
         buttonStyle={styles.buttonStyle}
         color={hint_type === 'secret' ? '#ffffff' : '#FF69B4'}
         fontWeight="900"
-        fontSize="14"
+        fontSize={14}
         onPress={() => navigation.navigate('Tab')}
       />
     </View>

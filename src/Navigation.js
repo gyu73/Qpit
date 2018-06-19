@@ -1,5 +1,5 @@
 import React from 'react';
-import { StackNavigator, TabNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
@@ -18,7 +18,7 @@ import {
   TopScreen,
 } from './screen/';
 
-const TabPageScreen = TabNavigator(
+const TabPageScreen = createBottomTabNavigator(
   {
     Home: {
       screen: HomeScreen,
@@ -58,7 +58,7 @@ const TabPageScreen = TabNavigator(
   },
 );
 
-const Navigation = StackNavigator({
+const Navigation = createStackNavigator({
   Top: {
     screen: TopScreen,
     navigationOptions: () => ({

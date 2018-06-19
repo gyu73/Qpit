@@ -72,7 +72,7 @@ function RegisterSecretHintsScreen(props: Props) {
         buttonStyle={styles.secretHintButtonStyle}
         color="#ffffff"
         fontWeight="900"
-        fontSize="14"
+        fontSize={14}
       />
       <Forms
         ref={(ref) => {
@@ -88,7 +88,7 @@ function RegisterSecretHintsScreen(props: Props) {
         buttonStyle={styles.secretHintButtonStyle}
         color="#ffffff"
         fontWeight="900"
-        fontSize="14"
+        fontSize={14}
         onPress={() => props.handleRegisterSecretHints(hint.title_en)}
       />
     </View>

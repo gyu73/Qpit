@@ -32,7 +32,7 @@ import Actions from '../../actions/';
 
 
 function ConfirmShootArrowsScreen(props: Props) {
-  const { like_person_profile_image, like_person_twitter_id } = props.users;
+  const { like_person_twitter_profile_image, like_person_screen_name } = props.users;
   const { hint, hint_type } = props.navigation.state.params;
   const { handleShootArrow } = props;
   const styles = StyleSheet.create({
@@ -60,10 +60,10 @@ function ConfirmShootArrowsScreen(props: Props) {
       <Avatar
         large
         rounded
-        source={{ uri: like_person_profile_image }}
+        source={{ uri: like_person_twitter_profile_image }}
         activeOpacity={0.7}
       />
-      <Text style={{ paddingTop: 20, color: '#ffffff' }}>{like_person_twitter_id}</Text>
+      <Text style={{ paddingTop: 20, color: '#ffffff' }}>{like_person_screen_name}</Text>
       <Icon
         name="heart-outlined"
         size={50}
@@ -80,7 +80,7 @@ function ConfirmShootArrowsScreen(props: Props) {
         buttonStyle={styles.buttonStyle}
         color={hint_type === 'secret' ? '#ffffff' : '#FF69B4'}
         fontWeight="900"
-        fontSize="14"
+        fontSize={14}
       />
     </View>
   );

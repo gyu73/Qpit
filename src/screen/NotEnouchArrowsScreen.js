@@ -68,16 +68,16 @@ function NotEnouchArrowsScreen(props: Props) {
               buttonStyle={styles.buttonStyle}
               color="#000000"
               fontWeight="900"
-              fontSize="14"
+              fontSize={14}
               title="まだ矢を飛ばせないよ！もう少しガマンしてね！ BY 恋のQpit 👼"
             />
             <Text style={{
- color: '#ffffff', marginTop: 40, fontWeight: '900', fontSize: '18',
+ color: '#ffffff', marginTop: 40, fontWeight: '900', fontSize: 18,
 }}
             >
           矢が回復するまで
             </Text>
-            <Text style={{ color: '#ffffff', fontWeight: '900', fontSize: '18' }}>
+            <Text style={{ color: '#ffffff', fontWeight: '900', fontSize: 18 }}>
           残り{z(hh)}：{z(mm)}：{z(ss)}
             </Text>
           </React.Fragment>
@@ -87,7 +87,7 @@ function NotEnouchArrowsScreen(props: Props) {
               buttonStyle={styles.buttonStyle}
               color="#000000"
               fontWeight="900"
-              fontSize="14"
+              fontSize={14}
               title="下のボタンを押して矢を回復してね。BY 恋のQpit 👼"
             />
             <Button
@@ -95,7 +95,7 @@ function NotEnouchArrowsScreen(props: Props) {
               buttonStyle={styles.arrowButtonStyle}
               color="#FF69B4"
               fontWeight="900"
-              fontSize="14"
+              fontSize={14}
               onPress={() => props.handleGetArrowStock()}
             />
           </React.Fragment>

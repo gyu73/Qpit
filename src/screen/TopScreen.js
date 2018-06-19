@@ -95,6 +95,7 @@ function TopScreen(props: Props) {
       <Loading text="ログイン中" isLoading={props.isLoading} />
       <View style={styles.title}>
         <Text style={styles.titleText}>Qpit</Text>
+        <Text style={styles.subText}>気になるあの子に矢を飛ばそう</Text>
       </View>
       <TWLoginButton
         style={styles.button}
@@ -115,7 +116,7 @@ function TopScreen(props: Props) {
           buttonStyle={styles.buttonStyle}
           color="#000000"
           fontWeight="900"
-          fontSize="14"
+          fontSize={14}
           title="自分の好きな人には
   「恋人はいるのか？」
   「好きな人はいるのか？」
@@ -166,7 +167,12 @@ const styles = StyleSheet.create({
     padding: 32,
   },
   titleText: {
-    fontSize: 24,
+    fontSize: 64,
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  subText: {
+    fontSize: 18,
     color: '#fff',
     fontWeight: 'bold',
   },
@@ -251,5 +257,3 @@ const Enhance = compose(
 );
 
 export default Enhance(TopScreen);
-
-// export default TopScreen;

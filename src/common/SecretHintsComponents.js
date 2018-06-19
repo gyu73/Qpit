@@ -23,14 +23,15 @@ function secretHintsComponents(props) {
     navigation,
     navigatePlace,
   } = props;
-  return config.secretHints.map((hint, index) => (
+  return config.secretHints.map(hint => (
     <Button
+      key={hint.title_jp}
       onPress={() => navigation.navigate(navigatePlace, { hint, hint_type: 'secret' })}
       title={hint.title_jp}
       buttonStyle={styles.secretHintButtonStyle}
       color="#ffffff"
       fontWeight="900"
-      fontSize="14"
+      fontSize={14}
     />
   ));
 }

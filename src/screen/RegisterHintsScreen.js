@@ -73,7 +73,7 @@ function RegisterNormalHintsScreen(props: Props) {
         buttonStyle={styles.buttonStyle}
         color="#FF69B4"
         fontWeight="900"
-        fontSize="14"
+        fontSize={14}
       />
       <Forms
         ref={(ref) => {
@@ -89,7 +89,7 @@ function RegisterNormalHintsScreen(props: Props) {
         buttonStyle={styles.buttonStyle}
         color="#FF69B4"
         fontWeight="900"
-        fontSize="14"
+        fontSize={14}
         onPress={() => props.handleRegisterNormalHints(hint.title_en)}
       />
     </View>

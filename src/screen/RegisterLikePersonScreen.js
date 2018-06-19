@@ -88,7 +88,7 @@ function RegisterLikePersonScreen(props) {
         buttonStyle={styles.buttonStyle}
         color="#FF69B4"
         fontWeight="900"
-        fontSize="14"
+        fontSize={14}
         onPress={() => props.handleRegisterLikePerson()}
       />
     </View>
