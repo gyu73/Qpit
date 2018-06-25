@@ -139,7 +139,10 @@ function TopScreen(props: Props) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FF69B4',
-    padding: 36,
+    paddingTop: 36,
+    paddingRight: 48,
+    paddingLeft: 48,
+    height: '100%',
   },
   title: {
     alignItems: 'center',

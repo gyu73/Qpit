@@ -35,6 +35,7 @@ const users = handleActions(
     last_shoot_time: '',
     like_person_screen_name: '', // @で始まる相手のアカウント名
     like_person_twitter_profile_image: '',
+    like_person_damy_profile_image: 'https://pbs.twimg.com/profile_images/1006101721024610305/G302QDgO_400x400.jpg',
     stock_arrow: 0,
     name: '',
     profile_image_url_https: '../assets/Qpit.png',

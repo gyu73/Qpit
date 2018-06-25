@@ -24,7 +24,7 @@ type Props = {
 }
 
 function ArrowsScreen(props: Props) {
-  const { like_person_twitter_profile_image, like_person_screen_name } = props.users;
+  const { like_person_twitter_profile_image, like_person_screen_name, like_person_damy_profile_image } = props.users;
   const { navigate } = props.navigation;
 
   const styles = StyleSheet.create({
@@ -53,10 +53,10 @@ function ArrowsScreen(props: Props) {
       <Avatar
         large
         rounded
-        source={{ uri: like_person_twitter_profile_image }}
+        source={{ uri: like_person_twitter_profile_image ? like_person_twitter_profile_image : like_person_damy_profile_image }}
         activeOpacity={0.7}
       />
-      <Text style={{ paddingTop: 20, color: '#ffffff' }}>{like_person_screen_name}</Text>
+      <Text style={{ paddingTop: 20, color: '#ffffff' }}> {like_person_screen_name ? like_person_screen_name : 'Qpit' }</Text>
       <Button
         onPress={() => props.navigateChooseHintsOrNotEnouchArrows()}
         title="矢を飛ばす"

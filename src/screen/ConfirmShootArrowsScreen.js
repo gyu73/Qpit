@@ -32,7 +32,7 @@ import Actions from '../../actions/';
 
 
 function ConfirmShootArrowsScreen(props: Props) {
-  const { like_person_twitter_profile_image, like_person_screen_name } = props.users;
+  const { like_person_twitter_profile_image, like_person_screen_name, like_person_damy_profile_image } = props.users;
   const { hint, hint_type } = props.navigation.state.params;
   const { handleShootArrow } = props;
   const styles = StyleSheet.create({
@@ -60,7 +60,7 @@ function ConfirmShootArrowsScreen(props: Props) {
       <Avatar
         large
         rounded
-        source={{ uri: like_person_twitter_profile_image }}
+        source={{ uri: like_person_twitter_profile_image ? like_person_damy_profile_image : like_person_damy_profile_image }}
         activeOpacity={0.7}
       />
       <Text style={{ paddingTop: 20, color: '#ffffff' }}>{like_person_screen_name}</Text>
