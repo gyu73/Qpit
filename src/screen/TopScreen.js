@@ -111,47 +111,26 @@ function TopScreen(props: Props) {
         type="twitter"
       />
       </TWLoginButton>
-      <View style={styles.buttonContainer}>
-        <Button
-          buttonStyle={styles.buttonStyle}
-          color="#000000"
-          fontWeight="900"
-          fontSize={14}
-          title="自分の好きな人には
-  「恋人はいるのか？」
-  「好きな人はいるのか？」
-  「好きな人のタイプは？」
-  「どんな人がタイプなのか？」
-  気になるけれど
-  なかなか聞き出せませんよね。
-
-  好きな人に告白したいけど
-  「もし両思いじゃなかったら？」
-  なんて、不安になること
-  ありますよねー。
-
-  でももう大丈夫！
-
-  Qpitとは
-  気になるあの子の
-
-  「好きな人」
-
-  についてのヒントを
-  匿名で質問の矢を
-  飛ばして得られる
-  そんな恋の
-  手助けアプリです！
-
-  恋をもっと効率よく
-  もっと確実に。
-
-  当たって砕けろの
-  時代はもう終わり。
-
-  さぁ、気になるあの子に
-  矢を飛ばそう！"
-        />
+      <View style={styles.messageBox}>
+        <Text style={styles.message}>自分の好きな人には</Text>
+        <Text style={styles.message}>「恋人はいるのか？」</Text>
+        <Text style={styles.message}>「好きな人はいるのか？」</Text>
+        <Text style={styles.message}>「好きな人のタイプは？」</Text>
+        <Text style={styles.message}>「どんな人がタイプなのか？」</Text>
+        <Text style={styles.message}>気になるけれど</Text>
+        <Text style={styles.message}>なかなか聞き出せませんよね。</Text>
+        <Text style={styles.message}>好きな人に告白したいけど</Text>
+        <Text style={styles.message}>「もし両思いじゃなかったら？」</Text>
+        <Text style={styles.message}>なんて、不安になることあるよねー。</Text>
+        <Text style={styles.message}>でももう大丈夫！</Text>
+        <Text style={styles.message}>Qpitとは気になるあの子の</Text>
+        <Text style={styles.message}>「好きな人」</Text>
+        <Text style={styles.message}>についてのヒントを匿名で質問の矢を</Text>
+        <Text style={styles.message}>飛ばして得られる</Text>
+        <Text style={styles.message}>そんな恋の手助けアプリです！</Text>
+        <Text style={styles.message}>恋をもっと効率よくもっと確実に。</Text>
+        <Text style={styles.message}>当たって砕けろの時代はもう終わり。</Text>
+        <Text style={styles.message}> さぁ、気になるあの子に矢を飛ばそう！</Text>
       </View>
     </ScrollView>
   );
@@ -160,7 +139,7 @@ function TopScreen(props: Props) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FF69B4',
-    padding: 64,
+    padding: 36,
   },
   title: {
     alignItems: 'center',
@@ -172,8 +151,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   subText: {
-    fontSize: 18,
+    fontSize: 14,
     color: '#fff',
+    marginTop: 12,
     fontWeight: 'bold',
   },
   buttonContainer: {
@@ -189,6 +169,17 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 4, height: 4 },
     shadowColor: 'black',
     shadowOpacity: 0.3,
+  },
+  messageBox: {
+    backgroundColor: 'white',
+    marginTop: 30,
+    borderRadius: 20,
+    padding: 12,
+    alignItems: 'flex-start',
+    fontSize: 12,
+  },
+  message: {
+    fontSize: 12,
   },
 });
 

@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { compose, withHandlers } from 'recompose';
@@ -47,16 +47,24 @@ function NotRegisterLikePersonScreen(props: Props) {
       shadowColor: 'black',
       shadowOpacity: 0.3,
     },
+    messageBox: {
+      backgroundColor: 'white',
+      marginTop: 60,
+      borderRadius: 20,
+      padding: 24,
+      alignItems: 'flex-start',
+      fontSize: 12,
+    },
+    message: {
+      fontSize: 12,
+    },
   });
   return (
     <View style={styles.container}>
-      <Button
-        buttonStyle={styles.buttonStyle}
-        color="#000000"
-        fontWeight="900"
-        fontSize={14}
-        title="好きな人を登録してないよ！好きな人を登録して矢を飛ばそう！"
-      />
+      <View style={styles.messageBox}>
+        <Text style={styles.message}>好きな人を登録してないよ！</Text>
+        <Text style={styles.message}>好きな人を登録して矢を飛ばそう！</Text>
+      </View>
       <Button
         onPress={() => props.handleRegisterLikePerson()}
         title="好きな人を登録する"

@@ -30,25 +30,33 @@ function NotEnouchHintsScreen(props: Props) {
       shadowColor: 'black',
       shadowOpacity: 0.3,
     },
+    messageBox: {
+      backgroundColor: 'white',
+      marginTop: 30,
+      borderRadius: 20,
+      padding: 12,
+      alignItems: 'flex-start',
+      fontSize: 12,
+    },
+    message: {
+      fontSize: 12,
+    },
   });
   return (
     <View style={styles.container}>
-      <Button
-        buttonStyle={styles.buttonStyle}
-        color="#000000"
-        fontWeight="900"
-        fontSize={14}
-        title="答えたヒント数が足りないよ。たくさんのヒントに答えてね！"
-      />
+      <View style={styles.messageBox}>
+        <Text style={styles.message}>登録したヒント数が足りないよ！</Text>
+        <Text style={styles.message}>もっとヒント数を入力してね！</Text>
+      </View>
       <Text style={{
  color: '#ffffff', marginTop: 40, fontWeight: '900', fontSize: 18,
 }}
-      >{secretAnswerHintNumber === 0 ? '急接近ヒントの入力が1つ足りません。' : ''}
+      >{secretAnswerHintNumber === 0 ? '急接近ヒントが1つ足りないよ！' : ''}
       </Text>
       <Text style={{
  color: '#ffffff', fontWeight: '900', fontSize: 18,
 }}
-      >{normalAnswerHintNumber <= 6 ? `ノーマルヒントの入力が${7 - normalAnswerHintNumber}つ足りません。` : ''}
+      >{normalAnswerHintNumber <= 6 ? `ノーマルヒントが${7 - normalAnswerHintNumber}つ足りないよ！` : ''}
       </Text>
     </View>
   );
