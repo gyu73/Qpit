@@ -56,7 +56,7 @@ function ArrowsScreen(props: Props) {
         source={{ uri: like_person_twitter_profile_image ? like_person_twitter_profile_image : like_person_damy_profile_image }}
         activeOpacity={0.7}
       />
-      <Text style={{ paddingTop: 20, color: '#ffffff' }}> {like_person_screen_name ? like_person_screen_name : 'Qpit' }</Text>
+      <Text style={{ paddingTop: 20, color: '#ffffff' }}> @{like_person_screen_name ? like_person_screen_name : 'Qpit15' }</Text>
       <Button
         onPress={() => props.navigateChooseHintsOrNotEnouchArrows()}
         title="矢を飛ばす"

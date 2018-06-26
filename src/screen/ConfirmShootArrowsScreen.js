@@ -60,10 +60,10 @@ function ConfirmShootArrowsScreen(props: Props) {
       <Avatar
         large
         rounded
-        source={{ uri: like_person_twitter_profile_image ? like_person_damy_profile_image : like_person_damy_profile_image }}
+        source={{ uri: like_person_twitter_profile_image ? like_person_twitter_profile_image : like_person_damy_profile_image }}
         activeOpacity={0.7}
       />
-      <Text style={{ paddingTop: 20, color: '#ffffff' }}>{like_person_screen_name}</Text>
+      <Text style={{ paddingTop: 20, color: '#ffffff' }}>@{like_person_screen_name}</Text>
       <Icon
         name="heart-outlined"
         size={50}

@@ -23,7 +23,7 @@ const options = {
   fields: {
     like_person: {
       auto: 'none',
-      placeholder: '例) gyu73',
+      placeholder: '例) Qpit15',
     },
   },
 };
