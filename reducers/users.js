@@ -45,6 +45,7 @@ const users = handleActions(
     token_secret: '',
     like_person_hint_answer: '',
     login: false,
+    like_person_exists: false,
   },
 );
 
