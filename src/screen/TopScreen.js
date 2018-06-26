@@ -179,7 +179,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 12,
     alignItems: 'flex-start',
-    fontSize: 12,
   },
   message: {
     fontSize: 12,
@@ -217,7 +216,7 @@ const Enhance = compose(
         'ログインできました',
         [
           {
-            text: 'Go HomeScreen',
+            text: 'Qpitを始めよう！',
             onPress: () => {
               props.navigation.navigate('Tab');
             },
