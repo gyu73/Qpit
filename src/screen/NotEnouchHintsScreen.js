@@ -36,7 +36,6 @@ function NotEnouchHintsScreen(props: Props) {
       borderRadius: 20,
       padding: 12,
       alignItems: 'flex-start',
-      fontSize: 12,
     },
     message: {
       fontSize: 12,
